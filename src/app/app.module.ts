@@ -17,11 +17,13 @@ import {
   MatTableModule,
   MatToolbarModule
 } from '@angular/material';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

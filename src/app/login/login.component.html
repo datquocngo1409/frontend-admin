@@ -1,11 +1,16 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" style="padding-left: 10%; padding-right: 10%">
   <mat-toolbar-row>
-    <span>DASHBOARD</span>
+    <span>APP MP3</span>
     <span class="example-fill-remaining-space"></span>
     <span class="align-center"></span>
     <span class="example-spacer"></span>
-    <button mat-button>About</button>
-    <button mat-button>Contact</button>
+    <button mat-button>Trang Chủ </button>
+    <button mat-button>TOP 100</button>
+    <button mat-button>Chủ Đề </button>
+    <button mat-button>Video </button>
+    <button mat-button>Album </button>
+    <button mat-button>Nghệ Sĩ </button>
+    <button mat-button>Nhạc Cá Nhân</button>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
@@ -26,34 +31,36 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div mat-dialog-content>
-      <form class="example-form">
-        <table class="example-full-width" cellspacing="0">
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
-              </mat-form-field>
-            </td>
-          </tr>
-        </table>
-      </form>
-      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-    </div>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="login()" color="primary">Login</button>
-  </mat-card-actions>
-</mat-card>
+<div [hidden]="auth.logined">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div mat-dialog-content>
+        <form class="example-form">
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </form>
+        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-raised-button (click)="auth.login(username, password)" color="primary">Login</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
