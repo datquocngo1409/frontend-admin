@@ -10,6 +10,6 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    document.body.classList.remove('login-img');
   }
-
 }
