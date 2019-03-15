@@ -1,66 +1,66 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>APP MP3</span>
-    <span class="example-fill-remaining-space"></span>
-    <span class="align-center"></span>
-    <span class="example-spacer"></span>
-    <button mat-button>Trang Chủ </button>
-    <button mat-button>TOP 100</button>
-    <button mat-button>Chủ Đề </button>
-    <button mat-button>Video </button>
-    <button mat-button>Album </button>
-    <button mat-button>Nghệ Sĩ </button>
-    <button mat-button>Nhạc Cá Nhân</button>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voicemail</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
-      </button>
-    </mat-menu>
-  </mat-toolbar-row>
-</mat-toolbar>
+<!--<mat-toolbar color="primary" style="margin-top: -10px; margin-left: -9px">-->
+<!--<mat-toolbar-row>-->
+<!--<span>APP MP3</span>-->
+<!--<span class="example-fill-remaining-space"></span>-->
+<!--<span class="align-center"></span>-->
+<!--<span class="example-spacer"></span>-->
+<!--<button mat-button>Trang Chủ </button>-->
+<!--<button mat-button>TOP 100</button>-->
+<!--<button mat-button>Chủ Đề </button>-->
+<!--<button mat-button>Video </button>-->
+<!--<button mat-button>Album </button>-->
+<!--<button mat-button>Nghệ Sĩ </button>-->
+<!--<button mat-button>Nhạc Cá Nhân</button>-->
+<!--<button mat-icon-button [matMenuTriggerFor]="menu">-->
+<!--<mat-icon>more_vert</mat-icon>-->
+<!--</button>-->
+<!--<mat-menu #menu="matMenu">-->
+<!--<button mat-menu-item>-->
+<!--<mat-icon>dialpad</mat-icon>-->
+<!--<span>Redial</span>-->
+<!--</button>-->
+<!--<button mat-menu-item disabled>-->
+<!--<mat-icon>voicemail</mat-icon>-->
+<!--<span>Check voicemail</span>-->
+<!--</button>-->
+<!--<button mat-menu-item>-->
+<!--<mat-icon>notifications_off</mat-icon>-->
+<!--<span>Disable alerts</span>-->
+<!--</button>-->
+<!--</mat-menu>-->
+<!--</mat-toolbar-row>-->
+<!--</mat-toolbar>-->
 
 <div [hidden]="auth.logined">
   <mat-card class="example-card">
     <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
+      <mat-card-title><span style="padding-left: 110px">ADMIN LOGIN</span></mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div mat-dialog-content>
+      <div mat-dialog-content class="example-fill-remaining-space">
         <form class="example-form">
-          <table class="example-full-width" cellspacing="0">
-            <tr>
-              <td>
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table>
+          <mat-form-field appearance="outline">
+            <mat-label>Enter username</mat-label>
+            <mat-icon matSuffix>person_outline</mat-icon>
+            <input matInput [(ngModel)]="username" name="username" required autocomplete="username password">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Enter password</mat-label>
+            <input matInput [(ngModel)]="password" name="password" required [type]="hide ? 'password' : 'text'" autocomplete="username password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
         </form>
-        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+        <!--<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>-->
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button type="submit" mat-raised-button (click)="auth.login(username, password)" color="primary">Login</button>
+    <section class="example-section">
+      <mat-checkbox class="example-margin">Keep me logged in</mat-checkbox>
+    </section>
+    <mat-card-actions style="text-align: end; margin-right: 20px">
+
+      <button style=" height: 40px; width: 100px; top: -50px" type="submit" mat-raised-button
+              (click)="auth.login(username, password)" color="primary">Login
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

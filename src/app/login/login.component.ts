@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   adminList: IAdmin[] = [];
   username = '';
   password = '';
+  hide = true;
 
   constructor(
     private adminService: AdminService,
