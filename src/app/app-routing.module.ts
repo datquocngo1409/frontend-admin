@@ -3,16 +3,31 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {AuthGuard} from './auth.guard';
+import {InformationComponent} from './admin/information/information.component';
+import {SongListComponent} from './admin/song-list/song-list.component';
 
 const routes: Routes = [
   {
     path: 'admin',
-    component: LoginComponent },
+    component: LoginComponent,
+  },
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard]
-  }
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'information',
+        component: InformationComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'song-list',
+        component: SongListComponent,
+        canActivate: [AuthGuard]
+      }
+    ]
+  },
 ];
 
 @NgModule({

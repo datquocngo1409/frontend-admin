@@ -1,0 +1,15 @@
+
+<mat-nav-list>
+  <h2 mat-subheader>User</h2>
+  <a mat-list-item (click)="showInformation()">
+    <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
+  </a>
+  <hr>
+  <a mat-list-item routerLink="/owner">
+    <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Add new Song</span>
+  </a>
+  <hr>
+  <a mat-list-item (click)="showListSong()">
+    <mat-icon>account_balance</mat-icon><span class="nav-caption">...Song</span>
+  </a>
+</mat-nav-list>

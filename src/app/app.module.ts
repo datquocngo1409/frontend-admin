@@ -11,19 +11,31 @@ import {MaterialModule} from './material/material.module';
 import {
   MatButtonModule,
   MatCardModule, MatCheckboxModule,
-  MatDialogModule, MatIconModule,
-  MatInputModule,
-  MatMenuModule, MatProgressSpinnerModule,
-  MatTableModule,
+  MatDialogModule, MatDividerModule, MatIconModule,
+  MatInputModule, MatListModule,
+  MatMenuModule, MatProgressSpinnerModule, MatSidenavContainer, MatSidenavContent, MatSidenavModule, MatSlideToggleModule,
+  MatTableModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './navigation/header/header.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { InformationComponent } from './admin/information/information.component';
+import {ChartsModule} from 'ng2-charts';
+import { SongListComponent } from './admin/song-list/song-list.component';
+import { CreateSongComponent } from './admin/create-song/create-song.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent,
+    SidenavListComponent,
+    InformationComponent,
+    SongListComponent,
+    CreateSongComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +54,14 @@ import { HomeComponent } from './home/home.component';
     MatMenuModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatListModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    FlexLayoutModule,
+    MatTabsModule,
+    MatDividerModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
