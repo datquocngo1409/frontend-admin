@@ -21,15 +21,20 @@
             </ng-container>
             <ng-container matColumnDef="mp3file">
               <mat-header-cell *matHeaderCellDef> Mp3File </mat-header-cell>
-              <mat-cell *matCellDef="let element">{{element.mp3_link}}</mat-cell>
+              <mat-cell *matCellDef="let element">
+                <audio controls>
+                  <source src="http://localhost:8080/mp3files/{{element.mp3File.name}}/raw" type="audio/mpeg">
+                </audio>
+              </mat-cell>
             </ng-container>
             <ng-container matColumnDef="image">
               <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
-              <mat-cell *matCellDef="let element">{{element.image}}</mat-cell>
+              <mat-cell *matCellDef="let element">
+                <img src="http://localhost:8080/images/{{element.image.name}}/raw" style="width: 60px; height: auto"></mat-cell>
             </ng-container>
             <ng-container matColumnDef="category">
               <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-              <mat-cell *matCellDef="let element">{{element.category}}</mat-cell>
+              <mat-cell *matCellDef="let element">{{element.songCategory.name}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="delete">
               <mat-header-cell *matHeaderCellDef></mat-header-cell>
