@@ -10,11 +10,23 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule,
-  MatDialogModule, MatDividerModule, MatIconModule,
-  MatInputModule, MatListModule,
-  MatMenuModule, MatProgressSpinnerModule, MatSidenavContainer, MatSidenavContent, MatSidenavModule, MatSlideToggleModule,
-  MatTableModule, MatTabsModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatOptionModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSidenavContainer,
+  MatSidenavContent,
+  MatSidenavModule,
+  MatSlideToggleModule,
+  MatTableModule,
+  MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import { HomeComponent } from './home/home.component';
@@ -25,6 +37,7 @@ import { InformationComponent } from './admin/information/information.component'
 import {ChartsModule} from 'ng2-charts';
 import { SongListComponent } from './admin/song-list/song-list.component';
 import { CreateSongComponent } from './admin/create-song/create-song.component';
+import { PostDialogComponent } from './admin/post-dialog/post-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +48,8 @@ import { CreateSongComponent } from './admin/create-song/create-song.component';
     SidenavListComponent,
     InformationComponent,
     SongListComponent,
-    CreateSongComponent
+    CreateSongComponent,
+    PostDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,9 +75,12 @@ import { CreateSongComponent } from './admin/create-song/create-song.component';
     FlexLayoutModule,
     MatTabsModule,
     MatDividerModule,
-    ChartsModule
+    ChartsModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PostDialogComponent]
 })
 export class AppModule { }

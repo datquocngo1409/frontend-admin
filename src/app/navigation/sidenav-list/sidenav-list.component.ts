@@ -21,6 +21,6 @@ export class SidenavListComponent implements OnInit {
   }
 
   showCreateForm() {
-    this.router.navigate(['/home/create']);
+    this.router.navigate(['/home/create-song']);
   }
 }

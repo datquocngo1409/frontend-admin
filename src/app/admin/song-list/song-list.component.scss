@@ -17,3 +17,8 @@
 a {
   cursor: pointer;
 }
+
+mat-header-cell mat-cell{
+  display:flex;
+  justify-content:flex-end;
+}
