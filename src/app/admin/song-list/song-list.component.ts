@@ -8,6 +8,7 @@ import {ISong} from '../../song';
   styleUrls: ['./song-list.component.scss']
 })
 export class SongListComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'delete'];
 
   songList: ISong[] = [];
 
@@ -16,5 +17,4 @@ export class SongListComponent implements OnInit {
   ngOnInit() {
     this.songService.getSongs().subscribe(next => (this.songList = next), error1 => (this.songList = []));
   }
-
 }

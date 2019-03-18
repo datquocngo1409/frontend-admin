@@ -6,30 +6,30 @@
       </mat-card-title>
       <mat-card-content>
         <div class="example-container mat-elevation-z8">
-          <mat-table #table [dataSource]="">
+          <mat-table #table [dataSource]="songList">
             <ng-container matColumnDef="name">
               <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-              <mat-cell *matCellDef="let element"></mat-cell>
+              <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="description">
               <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-              <mat-cell *matCellDef="let element"></mat-cell>
+              <mat-cell *matCellDef="let element">{{element.description}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="singer-name">
               <mat-header-cell *matHeaderCellDef> Singer </mat-header-cell>
-              <mat-cell *matCellDef="let element"></mat-cell>
+              <mat-cell *matCellDef="let element">{{element.singer_name}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="mp3file">
               <mat-header-cell *matHeaderCellDef> Mp3File </mat-header-cell>
-              <mat-cell *matCellDef="let element"></mat-cell>
+              <mat-cell *matCellDef="let element">{{element.mp3_link}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="image">
               <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
-              <mat-cell *matCellDef="let element"></mat-cell>
+              <mat-cell *matCellDef="let element">{{element.image}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="category">
               <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-              <mat-cell *matCellDef="let element"></mat-cell>
+              <mat-cell *matCellDef="let element">{{element.category}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="delete">
               <mat-header-cell *matHeaderCellDef></mat-header-cell>
@@ -40,8 +40,8 @@
                 </a>
               </mat-cell>
             </ng-container>
-            <mat-header-row ></mat-header-row>
-            <mat-row></mat-row>
+            <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
           </mat-table>
         </div>
       </mat-card-content>
