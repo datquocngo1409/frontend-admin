@@ -20,8 +20,8 @@ export class Mp3FileService {
   getMp3FileById(id: number): Observable<IMp3File> {
     return this.http.get<IMp3File>(`${this.API_URL}/${id}`);
   }
-  createMp3File(account: Partial<IMp3File>): Observable<IMp3File> {
-    return this.http.post<IMp3File>(this.API_URL, account);
+  createMp3File(account: Partial<any>): Observable<any> {
+    return this.http.post<any>(this.API_URL, account);
   }
   deleteMp3File(id: number): Observable<any> {
     return this.http.delete(`${this.API_URL}/${id}`);

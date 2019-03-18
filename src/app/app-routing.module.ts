@@ -5,6 +5,7 @@ import {HomeComponent} from './home/home.component';
 import {AuthGuard} from './auth.guard';
 import {InformationComponent} from './admin/information/information.component';
 import {SongListComponent} from './admin/song-list/song-list.component';
+import {CreateSongComponent} from './admin/create-song/create-song.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
       {
         path: 'song-list',
         component: SongListComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'create',
+        component: CreateSongComponent,
         canActivate: [AuthGuard]
       }
     ]
