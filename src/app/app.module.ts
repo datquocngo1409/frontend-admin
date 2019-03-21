@@ -24,7 +24,7 @@ import {
   MatSidenavContainer,
   MatSidenavContent,
   MatSidenavModule,
-  MatSlideToggleModule,
+  MatSlideToggleModule, MatSortModule,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule
@@ -82,7 +82,8 @@ import {SongEditComponent} from './admin/song-edit/song-edit.component';
     MatSelectModule,
     MatOptionModule,
     MatFileUploadModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent],
