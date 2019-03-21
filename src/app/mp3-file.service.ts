@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {IAdmin} from './admin';
 import {map} from 'rxjs/operators';
 import {IMp3File} from './mp3-file';
+import {IImage} from './image';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,9 @@ export class Mp3FileService {
   }
   updateAdmin(account: IMp3File): Observable<IMp3File> {
     return this.http.patch<IAdmin>(`${this.API_URL}/${account.id}`, account);
+  }
+
+  getMp3ByName(name: string): Observable<IImage> {
+    return this.http.get<IImage>(`http://localhost:8080/mp3filesname/${name}`);
   }
 }
