@@ -72,8 +72,8 @@ export class PostDialogComponent implements OnInit {
     const fb = new FormData();
     this.imageService.getImages().subscribe(next => this.imageList = next);
     this.mp3FileService.getMp3Files().subscribe(next => this.mp3FileList = next);
-    fb.append('file', this.fileImg);
-    fb.append('file', this.fileMp3);
+    fb.append('file', this.fileImg, Date.now() + '.jpg');
+    fb.append('file', this.fileMp3, Date.now() + '.mp3');
     if (true) {
       const {value} = this.formSong;
       this.songService.createSong(value).subscribe(() => {
