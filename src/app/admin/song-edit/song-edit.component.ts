@@ -3,6 +3,8 @@ import {SongService} from '../../song.service';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {SongCategoryService} from '../../song-category.service';
 import {ISong} from '../../song';
+import {SelectionModel} from '@angular/cdk/collections';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-song-edit',
@@ -12,16 +14,22 @@ import {ISong} from '../../song';
 export class SongEditComponent implements OnInit, AfterViewInit {
   public songList;
   public categoryList;
-  ELEMENT_DATA: ISong[] = [];
-  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'edit', 'delete'];
+  public selection;
+  ELEMENT_DATA: ISong[];
+  data: ISong[] = [];
+  displayedColumns: string[] = ['select', 'id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'edit', 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(public songService: SongService,
-              public categoryService: SongCategoryService) {
+              public categoryService: SongCategoryService,
+              public router: Router) {
     this.songList = new MatTableDataSource(this.ELEMENT_DATA);
     this.categoryList = new MatTableDataSource([]);
+    this.selection = new SelectionModel<ISong[]>(true, []);
   }
   ngOnInit() {
+    const songId = localStorage.getItem('editSongId');
+    this.songService.getSongById(songId);
     this.songService.getSongs().subscribe(next => (this.songList.data = next), error1 => (this.songList = []));
     this.categoryService.getSongCaegories().subscribe(data => (this.categoryList = data));
   }
@@ -33,5 +41,32 @@ export class SongEditComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.songList.paginator = this.paginator;
+  }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.songList.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.songList.data.forEach(row => this.selection.select(row));
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: ISong): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+
+  onSubmit() {
+    this.songService.updateSong(this.songList).subscribe( data => {
+      this.router.navigate(['home/song-list']);
+    });
   }
 }
