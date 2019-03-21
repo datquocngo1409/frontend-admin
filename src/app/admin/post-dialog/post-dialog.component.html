@@ -15,7 +15,7 @@
     <input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue"/>
     <mat-file-upload-queue #fileUploadQueue
                            [fileAlias]="'file'"
-                           [httpUrl]="''">
+                           [httpUrl]="'http://localhost:8080/images'">
 
       <mat-file-upload [file]="file" [id]="i"
                        *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
@@ -24,7 +24,7 @@
     <input id="singleFile1" type="file" [fileUploadInputFor]="fileUploadQueue"/>
     <mat-file-upload-queue #fileUploadQueue1
                            [fileAlias]="'file'"
-                           [httpUrl]="''">
+                           [httpUrl]="'http://localhost:8080/mp3files'">
       <mat-file-upload [file]="file" [id]="i"
                        *ngFor="let file of fileUploadQueue1.files; let i = index"></mat-file-upload>
     </mat-file-upload-queue>

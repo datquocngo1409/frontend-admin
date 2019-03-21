@@ -7,7 +7,7 @@ import {IImage} from './image';
   providedIn: 'root'
 })
 export class ImageService {
-  private readonly API_URL = 'localhost:8080/images';
+  private readonly API_URL = 'http://localhost:8080/images';
 
   constructor(private http: HttpClient) {
   }
