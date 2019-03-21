@@ -26,3 +26,6 @@ mat-header-cell mat-cell button{
   flex: 0 0 300px;
   padding: 8px 8px 8px 0;
 }
+/deep/ .mat-form-field {
+  width: 90%!important;
+}

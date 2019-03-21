@@ -18,7 +18,7 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatOptionModule,
+  MatOptionModule, MatPaginatorModule,
   MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavContainer,
@@ -38,6 +38,8 @@ import {ChartsModule} from 'ng2-charts';
 import { SongListComponent } from './admin/song-list/song-list.component';
 import { CreateSongComponent } from './admin/create-song/create-song.component';
 import { PostDialogComponent } from './admin/post-dialog/post-dialog.component';
+import {MatFileUploadModule} from 'angular-material-fileupload';
+import {SongEditComponent} from './admin/song-edit/song-edit.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { PostDialogComponent } from './admin/post-dialog/post-dialog.component';
     InformationComponent,
     SongListComponent,
     CreateSongComponent,
-    PostDialogComponent
+    PostDialogComponent,
+    SongEditComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,9 @@ import { PostDialogComponent } from './admin/post-dialog/post-dialog.component';
     MatDividerModule,
     ChartsModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatFileUploadModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

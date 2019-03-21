@@ -6,6 +6,7 @@ import {AuthGuard} from './auth.guard';
 import {InformationComponent} from './admin/information/information.component';
 import {SongListComponent} from './admin/song-list/song-list.component';
 import {CreateSongComponent} from './admin/create-song/create-song.component';
+import {SongEditComponent} from './admin/song-edit/song-edit.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
       {
         path: 'create-song',
         component: CreateSongComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'song-edit',
+        component: SongEditComponent,
         canActivate: [AuthGuard]
       }
     ]

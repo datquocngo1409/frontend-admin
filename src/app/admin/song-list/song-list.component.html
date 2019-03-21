@@ -1,55 +1,80 @@
-<div class="container">
-  <div fxLayout="row" fxLayoutAlign="center center" class="content">
-    <mat-card class="card" >
-      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-        <h3>Songs List</h3>
-      </mat-card-title>
-      <mat-card-content>
-        <div class="example-container mat-elevation-z8">
-          <mat-table #table [dataSource]="songList" style="text-align: center">
-            <ng-container matColumnDef="name">
-              <mat-header-cell *matHeaderCellDef style="text-align: center"> Name </mat-header-cell>
-              <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="description">
-              <mat-header-cell *matHeaderCellDef style="text-align: center">Description</mat-header-cell>
-              <mat-cell *matCellDef="let element">{{element.description}}</mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="singer-name">
-              <mat-header-cell *matHeaderCellDef style="text-align: center"> Singer </mat-header-cell>
-              <mat-cell *matCellDef="let element">{{element.singer_name}}</mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="mp3file">
-              <mat-header-cell *matHeaderCellDef style="text-align: center"> Mp3File </mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <audio controls>
-                  <source src="http://localhost:8080/mp3files/{{element.mp3File.name}}/raw" type="audio/mpeg" style="width: 100px">
-                </audio>
-              </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="image">
-              <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <img src="http://localhost:8080/images/{{element.image.name}}/raw" style="width: 60px; height: auto"></mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="category">
-              <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-              <mat-cell *matCellDef="let element">{{element.songCategory.name}}</mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="delete">
-              <mat-header-cell *matHeaderCellDef></mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <a
-                  type="button">
-                  <mat-icon class="icon">delete</mat-icon>
-                </a>
-              </mat-cell>
-            </ng-container>
-            <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </mat-table>
-        </div>
-      </mat-card-content>
-    </mat-card>
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value"
+              (click)="filter.value=''; applyFilter('');">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="container" fxLayout="row" fxLayoutAlign="center center">
+    <div class="content">
+      <mat-card class="card">
+        <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+          <h3>Songs List</h3>
+        </mat-card-title>
+        <mat-card-content>
+          <div class="example-container mat-elevation-z8">
+            <mat-table #table [dataSource]="songList" style="text-align: center">
+              <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef style="text-align: center"> ID</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef style="text-align: center"> Name</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef style="text-align: center">Description</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.description}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="singer-name">
+                <mat-header-cell *matHeaderCellDef style="text-align: center"> Singer</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.singer_name}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="mp3file">
+                <mat-header-cell [ngClass]="'customWidthClass'" *matHeaderCellDef style="text-align: center"> Mp3File
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass'">
+                  <audio controls>
+                    <source src="http://localhost:8080/mp3files/{{element.mp3File.name}}/raw" type="audio/mpeg"
+                            style="width: 100px">
+                  </audio>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="image">
+                <mat-header-cell *matHeaderCellDef> Image</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <img src="http://localhost:8080/images/{{element.image.name}}/raw" style="width: 60px; height: auto">
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="category">
+                <mat-header-cell *matHeaderCellDef> Category</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.songCategory.name}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef> Edit</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <button mat-raised-button color="primary" (click)="showEditForm()">Edit</button>
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <a
+                    type="button">
+                    <mat-icon class="icon">delete</mat-icon>
+                  </a>
+                </mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator [pageSizeOptions]="[1, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>

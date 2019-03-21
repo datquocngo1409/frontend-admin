@@ -4,23 +4,31 @@
       <input matInput placeholder="Name" type="text" required name="name" [(ngModel)]="formCreate.name">
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput placeholder="Description" required  name="body" type="text" [(ngModel)]="formCreate.description"></textarea>
+      <textarea matInput placeholder="Description" required name="body" type="text"
+                [(ngModel)]="formCreate.description"></textarea>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Singer" type="text" required name="name" [(ngModel)]="formCreate.singer_name">
     </mat-form-field>
-      <!--<input matInput placeholder="Mp3 File" type="file" required name="name" [(ngModel)]="formCreate.mp3File">-->
-      <button (click)="fileInput.click()">
-        <mat-icon>library_add</mat-icon>
-        <span>Select</span>
-        <input #fileInput type="file" (change)="fileInput($event)" [(ngModel)]="formCreate.mp3File" placeholder="MP3 File" name="name">
-      </button>
-      <button (click)="fileInput.click()">
-        <mat-icon>library_add</mat-icon>
-        <span>Select</span>
-        <input #fileInput placeholder="Image" type="file" (change)="fileInput($event)" [(ngModel)]="formCreate.image" name="name">
-      </button>
-      <!--<input matInput placeholder="Image" type="file" required name="name" [(ngModel)]="formCreate.image">-->
+    <!--<input matInput placeholder="Mp3 File" type="file" required name="name" [(ngModel)]="formCreate.mp3File">-->
+    <label for="singleFile">Upload Image</label>
+    <input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue"/>
+    <mat-file-upload-queue #fileUploadQueue
+                           [fileAlias]="'file'"
+                           [httpUrl]="''">
+
+      <mat-file-upload [file]="file" [id]="i"
+                       *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+    </mat-file-upload-queue>
+    <label for="singleFile">Upload Mp3</label>
+    <input id="singleFile1" type="file" [fileUploadInputFor]="fileUploadQueue"/>
+    <mat-file-upload-queue #fileUploadQueue1
+                           [fileAlias]="'file'"
+                           [httpUrl]="''">
+      <mat-file-upload [file]="file" [id]="i"
+                       *ngFor="let file of fileUploadQueue1.files; let i = index"></mat-file-upload>
+    </mat-file-upload-queue>
+    <!--<input matInput placeholder="Image" type="file" required name="name" [(ngModel)]="formCreate.image">-->
     <mat-form-field>
       <mat-select placeholder="Post Category" required name="category">
         <mat-option>
