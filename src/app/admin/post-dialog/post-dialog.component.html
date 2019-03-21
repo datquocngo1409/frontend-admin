@@ -1,43 +1,96 @@
+<!--<div mat-dialog-content>-->
+<!--<form class="example-form">-->
+<!--<mat-form-field>-->
+<!--<input matInput placeholder="Name" type="text" required name="name" [(ngModel)]="formCreate.name">-->
+<!--</mat-form-field>-->
+<!--<mat-form-field>-->
+<!--<textarea matInput placeholder="Description" required name="body" type="text"-->
+<!--[(ngModel)]="formCreate.description"></textarea>-->
+<!--</mat-form-field>-->
+<!--<mat-form-field>-->
+<!--<input matInput placeholder="Singer" type="text" required name="name" [(ngModel)]="formCreate.singer_name">-->
+<!--</mat-form-field>-->
+<!--&lt;!&ndash;<input matInput placeholder="Mp3 File" type="file" required name="name" [(ngModel)]="formCreate.mp3File">&ndash;&gt;-->
+<!--<label for="singleFile">Upload Image</label>-->
+<!--<input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue" [hidden]="uploadedImage"/>-->
+<!--<mat-file-upload-queue #fileUploadQueue-->
+<!--[fileAlias]="'file'"-->
+<!--[httpUrl]="'http://localhost:8080/images'"-->
+<!--(click)="clickUpImage(); fileImg = fileUploadQueue[0]"-->
+<!--&gt;-->
+
+<!--<mat-file-upload [file]="file" [id]="i"-->
+<!--*ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>-->
+<!--</mat-file-upload-queue>-->
+<!--<label for="singleFile">Upload Mp3</label>-->
+<!--<input id="singleFile1" type="file" [fileUploadInputFor]="fileUploadQueue1" [hidden]="uploadedMp3"/>-->
+<!--<mat-file-upload-queue  #fileUploadQueue1-->
+<!--[fileAlias]="'file'"-->
+<!--[httpUrl]="'http://localhost:8080/mp3files'"-->
+<!--(click)="clickUpMp3(); fileMp3 =  fileUploadQueue1[0]"-->
+<!--&gt;-->
+<!--<mat-file-upload [file]="file" [id]="i"-->
+<!--*ngFor="let file of fileUploadQueue1.files; let i = index"></mat-file-upload>-->
+<!--</mat-file-upload-queue>-->
+<!--&lt;!&ndash;<input matInput placeholder="Image" type="file" required name="name" [(ngModel)]="formCreate.image">&ndash;&gt;-->
+<!--<mat-form-field>-->
+<!--<mat-select placeholder="Post Category" required name="category">-->
+<!--<mat-option *ngFor="let category of categoryList" [value]="category">{{category.name}}</mat-option>-->
+<!--</mat-select>-->
+<!--</mat-form-field>-->
+<!--<button mat-raised-button type="submit" color="primary">Save</button>-->
+<!--</form>-->
+<!--</div>-->
+<!--<div mat-dialog-actions>-->
+<!--<button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button>-->
+<!--</div>-->
+
+
 <div mat-dialog-content>
-  <form class="example-form">
+  <form class="example-form" [formGroup]="formSong" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <input matInput placeholder="Name" type="text" required name="name" [(ngModel)]="formCreate.name">
+      <input matInput placeholder="Name" type="text" required name="name" formControlName="name">
     </mat-form-field>
     <mat-form-field>
       <textarea matInput placeholder="Description" required name="body" type="text"
-                [(ngModel)]="formCreate.description"></textarea>
+                formControlName="description"></textarea>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Singer" type="text" required name="name" [(ngModel)]="formCreate.singer_name">
+      <input matInput placeholder="Singer" type="text" required name="name" formControlName="singer_name">
     </mat-form-field>
     <!--<input matInput placeholder="Mp3 File" type="file" required name="name" [(ngModel)]="formCreate.mp3File">-->
     <label for="singleFile">Upload Image</label>
-    <input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue"/>
+    <input id="singleFile" formControlName="image" type="file" [fileUploadInputFor]="fileUploadQueue"
+           [hidden]="uploadedImage" (change)="onSelectImage($event)"/>
     <mat-file-upload-queue #fileUploadQueue
                            [fileAlias]="'file'"
-                           [httpUrl]="''">
+                           [httpUrl]="'http://localhost:8080/images'"
+                           (click)="clickUpImage(); fileImg = fileUploadQueue.firstElementChild"
+    >
 
       <mat-file-upload [file]="file" [id]="i"
                        *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
     </mat-file-upload-queue>
     <label for="singleFile">Upload Mp3</label>
-    <input id="singleFile1" type="file" [fileUploadInputFor]="fileUploadQueue"/>
+    <input id="singleFile1" formControlName="mp3File" type="file" [fileUploadInputFor]="fileUploadQueue1"
+           [hidden]="uploadedMp3" (change)="onSelectMp3($event)"/>
     <mat-file-upload-queue #fileUploadQueue1
                            [fileAlias]="'file'"
-                           [httpUrl]="''">
+                           [httpUrl]="'http://localhost:8080/mp3files'"
+                           (click)="clickUpMp3(); fileMp3 = fileUploadQueue1.firstElementChild"
+    >
       <mat-file-upload [file]="file" [id]="i"
                        *ngFor="let file of fileUploadQueue1.files; let i = index"></mat-file-upload>
     </mat-file-upload-queue>
     <!--<input matInput placeholder="Image" type="file" required name="name" [(ngModel)]="formCreate.image">-->
     <mat-form-field>
-      <mat-select placeholder="Post Category" required name="category">
-        <mat-option>
-        </mat-option>
+      <mat-select placeholder="Post Category" required name="category" formControlName="songCategory">
+        <mat-option *ngFor="let category of categoryList" [value]="category">{{category.name}}</mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-raised-button type="submit" color="primary">Save</button>
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button>
+  <button mat-raised-button class="close" type="button" color="warn" (click)="onNoClick()">Cancel</button>
 </div>

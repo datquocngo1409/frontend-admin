@@ -5,6 +5,11 @@ import {ISongCategory} from '../../song-category';
 import {SongCategoryService} from '../../song-category.service';
 import {ImageService} from '../../image.service';
 import {Mp3FileService} from '../../mp3-file.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ISong} from '../../song';
+import {IImage} from '../../image';
+import {IMp3File} from '../../mp3-file';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post-dialog',
@@ -15,7 +20,13 @@ export class PostDialogComponent implements OnInit {
   fileImg: File;
   fileMp3: File;
   categoryList: ISongCategory[] = [];
-  formCreate = {
+  song: ISong = null;
+  imageList: IImage[] = [];
+  mp3FileList: IMp3File[] = [];
+  image: IImage;
+  mp3File: IMp3File;
+  name: string;
+  formCreate: {
     name: '',
     description: '',
     singer_name: '',
@@ -23,7 +34,11 @@ export class PostDialogComponent implements OnInit {
     image: '',
     songCategory: ''
   };
+
+  formSong: FormGroup;
   public event: EventEmitter<any> = new EventEmitter();
+  uploadedMp3 = false;
+  uploadedImage = false;
 
   constructor(
     public dialogRef: MatDialogRef<PostDialogComponent>,
@@ -32,6 +47,8 @@ export class PostDialogComponent implements OnInit {
     private songService: SongService,
     private imageService: ImageService,
     private mp3FileService: Mp3FileService,
+    private fb: FormBuilder,
+    private router: Router
   ) {
   }
 
@@ -41,6 +58,37 @@ export class PostDialogComponent implements OnInit {
 
   ngOnInit() {
     this.songCategoryService.getSongCaegories().subscribe(data => this.categoryList = data);
+    this.formSong = this.fb.group({
+      name: [''],
+      description: [''],
+      singer_name: [''],
+      mp3File: [''],
+      image: [''],
+      songCategory: ['']
+    });
+  }
+
+  onSubmit() {
+    const fb = new FormData();
+    this.imageService.getImages().subscribe(next => this.imageList = next);
+    this.mp3FileService.getMp3Files().subscribe(next => this.mp3FileList = next);
+    fb.append('file', this.fileImg);
+    fb.append('file', this.fileMp3);
+    if (true) {
+      const {value} = this.formSong;
+      this.songService.createSong(value).subscribe(() => {
+        alert('Create Successful!');
+        this.dialogRef.close();
+      });
+    }
+  }
+
+  clickUpMp3() {
+    this.uploadedMp3 = true;
+  }
+
+  clickUpImage() {
+    this.uploadedImage = true;
   }
 
   onSelectImage(event) {
@@ -49,22 +97,5 @@ export class PostDialogComponent implements OnInit {
 
   onSelectMp3(event) {
     this.fileMp3 = event.target.files[0];
-  }
-
-  onSubmit() {
-    const fbImage = new FormData();
-    const fbMp3 = new FormData();
-    fbImage.append('fileImage', this.fileImg, Date.now() + this.fileImg.name);
-    fbMp3.append('fileMp3', this.fileMp3, Date.now() + this.fileMp3.name);
-    // if (this.formCreate.valid && this.fileImg.name != null && this.fileMp3.name != null) {
-    //   this.formCreate.get('image').setValue(`${Date.now() + this.fileImg.name}`);
-    //   this.formCreate.get('mp3File').setValue(`${Date.now() + this.fileMp3.name}`);
-    //   const {value} = this.formCreate;
-    //   this.imageService.create(fbImage).subscribe();
-    //   this.mp3FileService.createMp3File(fbMp3).subscribe();
-    //   this.songService.createSong(value).subscribe(() => {
-    //     this.router.navigate(['home/song-list']).then(() => alert('created success'));
-    //   });
-    // }
   }
 }
