@@ -1,7 +1,7 @@
 <div class="example-container mat-elevation-z8">
   <div class="example-header">
     <mat-form-field>
-      <input matInput #filter (keyup) ="applyFilter($event.target.value)" placeholder="Filter">
+      <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value"
               (click)="filter.value=''; applyFilter('');">
         <mat-icon>close</mat-icon>
@@ -14,6 +14,26 @@
       <mat-card-content>
         <div class="example-container mat-elevation-z8">
           <mat-table #table [dataSource]="songList">
+
+            <!--CheckBox column-->
+
+            <ng-container matColumnDef="select">
+              <mat-header-cell mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                              [checked]="selection.hasValue() && isAllSelected()"
+                              [indeterminate]="selection.hasValue() && !isAllSelected()"
+                              [aria-label]="checkboxLabel()">
+                </mat-checkbox>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                              (change)="$event ? selection.toggle(row) : null"
+                              [checked]="selection.isSelected(row)"
+                              [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+              </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="id">
               <mat-header-cell *matHeaderCellDef style="text-align: center"> ID</mat-header-cell>
               <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
@@ -30,7 +50,8 @@
               <mat-header-cell *matHeaderCellDef style="text-align: center">Description</mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <mat-form-field floatLabel="never">
-                  <input matInput placeholder="Description" [value]="element.description" [(ngModel)]="element.description">
+                  <input matInput placeholder="Description" [value]="element.description"
+                         [(ngModel)]="element.description">
                 </mat-form-field>
               </mat-cell>
             </ng-container>
@@ -69,13 +90,13 @@
               </mat-cell>
             </ng-container>
             <ng-container matColumnDef="edit">
-                <mat-header-cell *matHeaderCellDef> State</mat-header-cell>
+              <mat-header-cell *matHeaderCellDef> State</mat-header-cell>
               <mat-cell *matCellDef="let element">
-                <button mat-raised-button color="primary">Save</button>
+                <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
               </mat-cell>
             </ng-container>
             <ng-container matColumnDef="delete">
-              <mat-header-cell *matHeaderCellDef></mat-header-cell>
+              <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <a
                   type="button">

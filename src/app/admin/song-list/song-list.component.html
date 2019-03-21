@@ -56,16 +56,7 @@
               <ng-container matColumnDef="edit">
                 <mat-header-cell *matHeaderCellDef> Edit</mat-header-cell>
                 <mat-cell *matCellDef="let element">
-                  <button mat-raised-button color="primary" (click)="showEditForm()">Edit</button>
-                </mat-cell>
-              </ng-container>
-              <ng-container matColumnDef="delete">
-                <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <a
-                    type="button">
-                    <mat-icon class="icon">delete</mat-icon>
-                  </a>
+                  <button mat-raised-button color="primary" (click)="showEditForm(element)">Edit</button>
                 </mat-cell>
               </ng-container>
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

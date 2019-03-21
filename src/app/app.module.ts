@@ -83,7 +83,7 @@ import {SongEditComponent} from './admin/song-edit/song-edit.component';
     MatOptionModule,
     MatFileUploadModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

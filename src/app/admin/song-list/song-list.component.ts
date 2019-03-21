@@ -12,7 +12,7 @@ import {ISong} from '../../song';
 export class SongListComponent implements OnInit, AfterViewInit {
   public songList;
   ELEMENT_DATA: ISong[] = [];
-  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'edit', 'delete'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'edit'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatPaginator;
@@ -34,7 +34,9 @@ export class SongListComponent implements OnInit, AfterViewInit {
     this.songList.sort = this.sort;
   }
 
-  showEditForm() {
+  showEditForm(song: ISong) {
+    localStorage.removeItem('editSongId');
+    localStorage.setItem('editSongId', song.id.toString());
     this.router.navigate(['home/song-edit']);
   }
 }
