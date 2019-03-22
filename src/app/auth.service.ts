@@ -22,6 +22,9 @@ export class AuthService implements OnInit {
     this.adminService.getAdmins().subscribe(next => (this.adminList = next), error1 => (this.adminList = []));
     let adminFor;
     this.logined = false;
+    if (localStorage.getItem('admin')) {
+      return true;
+    }
     for (adminFor of this.adminList) {
       if (this.admin.username === adminFor.username && this.admin.password === adminFor.password) {
         this.logined = true;
@@ -40,6 +43,7 @@ export class AuthService implements OnInit {
       password: password
     };
     if (this.isAuthenticated()) {
+      localStorage.setItem('admin', JSON.stringify({token: 'jwt will come later', name: this.admin.username}));
       this.route.navigate(['home']);
     }
   }
