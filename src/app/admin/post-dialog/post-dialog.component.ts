@@ -10,6 +10,7 @@ import {ISong} from '../../song';
 import {IImage} from '../../image';
 import {IMp3File} from '../../mp3-file';
 import {Router} from '@angular/router';
+import {ToasterService} from 'truly-ui';
 
 @Component({
   selector: 'app-post-dialog',
@@ -26,6 +27,8 @@ export class PostDialogComponent implements OnInit {
   image: IImage;
   mp3File: IMp3File;
   name: string;
+  message = '';
+
   formCreate: {
     name: '',
     description: '',
@@ -48,7 +51,8 @@ export class PostDialogComponent implements OnInit {
     private imageService: ImageService,
     private mp3FileService: Mp3FileService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toasterService: ToasterService
   ) {
   }
 
@@ -75,17 +79,23 @@ export class PostDialogComponent implements OnInit {
     this.mp3FileService.getMp3Files().subscribe(next => this.mp3FileList = next);
     // fb.append('file', this.fileImg);
     // fb1.append('file', this.fileMp3);
-    if (true) {
-      const {value} = this.formSong;
-      // this.imageService.create(fb).subscribe();
-      // this.mp3FileService.createMp3File(fb1).subscribe();
-      this.songService.createSong(value).subscribe(() => {
-        alert('Create Successful!');
-        this.dialogRef.close();
-      });
-    }
+    const {value} = this.formSong;
+    this.songService.createSong(value).subscribe(() => {
+      this.dialogRef.close();
+    });
   }
-
+  onClick( event ) {
+    this.toasterService.information({
+      title: 'Created successful!',
+      message: 'Check list items...',
+      position: 'top-right',
+      width: '400px',
+      height: '70px',
+      progress: true,
+      showIcon: true,
+      time: 2000,
+    });
+  }
   clickUpMp3() {
     this.uploadedMp3 = true;
   }

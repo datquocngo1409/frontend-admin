@@ -40,6 +40,7 @@ import { CreateSongComponent } from './admin/create-song/create-song.component';
 import { PostDialogComponent } from './admin/post-dialog/post-dialog.component';
 import {MatFileUploadModule} from 'angular-material-fileupload';
 import {SongEditComponent} from './admin/song-edit/song-edit.component';
+import {ButtonModule, CoreModule, InputModule, ToasterModule} from 'truly-ui';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,10 @@ import {SongEditComponent} from './admin/song-edit/song-edit.component';
     MatFileUploadModule,
     MatPaginatorModule,
     MatSortModule,
+    ButtonModule,
+    CoreModule.forRoot({theme: 'default'}),
+    InputModule.forRoot(),
+    ToasterModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

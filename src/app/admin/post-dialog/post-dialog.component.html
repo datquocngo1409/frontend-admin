@@ -48,7 +48,7 @@
         <mat-option *ngFor="let category of categoryList" [value]="category">{{category.name}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button type="submit" color="primary">Save</button>
+    <button mat-raised-button type="submit" color="primary" (click)="onClick($event)">Save</button>
   </form>
 </div>
 <div mat-dialog-actions>
