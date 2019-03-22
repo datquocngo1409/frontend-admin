@@ -17,9 +17,10 @@ export class SongEditComponent implements OnInit, AfterViewInit {
   public selection;
   ELEMENT_DATA: ISong[];
   data: ISong[] = [];
-  displayedColumns: string[] = ['select', 'id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'edit', 'delete'];
+  displayedColumns: string[] = ['select', 'id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'edit'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(public songService: SongService,
               public categoryService: SongCategoryService,
               public router: Router) {
@@ -27,12 +28,14 @@ export class SongEditComponent implements OnInit, AfterViewInit {
     this.categoryList = new MatTableDataSource([]);
     this.selection = new SelectionModel<ISong[]>(true, []);
   }
+
   ngOnInit() {
     const songId = localStorage.getItem('editSongId');
-    this.songService.getSongById(songId);
+    this.songService.getSongById(1);
     this.songService.getSongs().subscribe(next => (this.songList.data = next), error1 => (this.songList = []));
     this.categoryService.getSongCaegories().subscribe(data => (this.categoryList = data));
   }
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
@@ -65,8 +68,11 @@ export class SongEditComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    this.songService.updateSong(this.songList).subscribe( data => {
+    this.songService.updateSong(this.songList).subscribe(data => {
       this.router.navigate(['home/song-list']);
     });
+  }
+
+  deleteFunc(song: ISong) {
   }
 }

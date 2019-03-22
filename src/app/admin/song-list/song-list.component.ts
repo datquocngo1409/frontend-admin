@@ -12,17 +12,20 @@ import {ISong} from '../../song';
 export class SongListComponent implements OnInit, AfterViewInit {
   public songList;
   ELEMENT_DATA: ISong[] = [];
-  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'edit'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'edit', 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatPaginator;
+
   constructor(public songService: SongService,
               public router: Router) {
     this.songList = new MatTableDataSource(this.ELEMENT_DATA);
   }
+
   ngOnInit() {
     this.songService.getSongs().subscribe(next => (this.songList.data = next));
   }
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
@@ -38,6 +41,12 @@ export class SongListComponent implements OnInit, AfterViewInit {
     localStorage.removeItem('editSongId');
     localStorage.setItem('editSongId', song.id.toString());
     this.router.navigate(['home/song-edit']);
+  }
+
+  deleteFunc(song: ISong) {
+    this.songService.deleteSong(song.id).subscribe(() => this.songList = this.songList.filter(t => t.id !== song.id));
+    alert('Deleted!');
+    this.router.navigate(['home/song-list']);
   }
 }
 

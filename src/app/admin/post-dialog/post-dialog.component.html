@@ -12,22 +12,36 @@
     </mat-form-field>
     <!--<input matInput placeholder="Mp3 File" type="file" required name="name" [(ngModel)]="formCreate.mp3File">-->
     <label for="singleFile">Upload Image</label>
-    <input id="singleFile" formControlName="image" type="file" [fileUploadInputFor]="fileUploadQueue" (change)="onSelectImage($event)"/>
+    <input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue" (change)="onSelectImage($event)"/>
     <mat-file-upload-queue #fileUploadQueue
                            [fileAlias]="'file'"
-                           [httpUrl]="'http://localhost:8080/images'">
+                           [httpUrl]="'http://localhost:8080/images'"
+                           (click)="clickUpImage()"
+    >
 
       <mat-file-upload [file]="file" [id]="i"
                        *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
     </mat-file-upload-queue>
+    <mat-form-field>
+      <mat-select placeholder="Image Choose" required name="image" formControlName="image" (click)="loadImageSelect()">
+        <mat-option *ngFor="let image of imageList" [value]="image">{{image.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <label for="singleFile">Upload Mp3</label>
-    <input id="singleFile1" formControlName="mp3File" type="file" [fileUploadInputFor]="fileUploadQueue1"/>
+    <input id="singleFile1" type="file" [fileUploadInputFor]="fileUploadQueue1"/>
     <mat-file-upload-queue #fileUploadQueue1
                            [fileAlias]="'file'"
-                           [httpUrl]="'http://localhost:8080/mp3files'">
+                           [httpUrl]="'http://localhost:8080/mp3files'"
+                           (click)="clickUpMp3()"
+    >
       <mat-file-upload [file]="file" [id]="i"
                        *ngFor="let file of fileUploadQueue1.files; let i = index"></mat-file-upload>
     </mat-file-upload-queue>
+    <mat-form-field>
+      <mat-select placeholder="Mp3 File Choose" required name="mp3File" formControlName="mp3File" (click)="loadMp3Select()">
+        <mat-option *ngFor="let mp3File of mp3FileList" [value]="mp3File">{{mp3File.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <!--<input matInput placeholder="Image" type="file" required name="name" [(ngModel)]="formCreate.image">-->
     <mat-form-field>
       <mat-select placeholder="Post Category" required name="category" formControlName="songCategory">
