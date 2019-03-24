@@ -49,6 +49,11 @@ export class SongEditComponent implements OnInit {
 
   ngOnInit() {
     this.songCategoryService.getSongCaegories().subscribe(data => this.categoryList = data);
+    const songId = localStorage.getItem('editSongId');
+    this.songService.getSongById(Number(songId)).subscribe(data => {
+      this.song = data;
+      this.formSong.patchValue(this.song);
+    });
     this.formSong = this.fb.group({
       name: [''],
       description: [''],
@@ -57,18 +62,18 @@ export class SongEditComponent implements OnInit {
       image: [''],
       songCategory: ['']
     });
-    const songId = localStorage.getItem('editSongId');
-    this.songService.getSongById(Number(songId)).subscribe(data => {
-      this.formSong.patchValue(data);
-    });
   }
 
   onSubmit() {
     this.imageService.getImages().subscribe(next => this.imageList = next);
     this.mp3FileService.getMp3Files().subscribe(next => this.mp3FileList = next);
     const {value} = this.formSong;
-    this.songService.updateSong(value).subscribe(() => {
-      this.dialogRef.close();
+    const data = {
+      ...this.song,
+      ...value
+    };
+    this.songService.updateSong(data).subscribe(() => {
+      this.router.navigate(['home/song-list']);
     });
   }
 
@@ -92,6 +97,11 @@ export class SongEditComponent implements OnInit {
   onSelectImage(event) {
     this.fileImg = event.target.files[0];
   }
+
+  onSelectMp3(event) {
+    this.fileMp3 = event.target.files[0];
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
