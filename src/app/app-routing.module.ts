@@ -7,6 +7,7 @@ import {InformationComponent} from './admin/information/information.component';
 import {SongListComponent} from './admin/song-list/song-list.component';
 import {CreateSongComponent} from './admin/create-song/create-song.component';
 import {SongEditComponent} from './admin/song-edit/song-edit.component';
+import {MediaLibraryComponent} from './admin/media-library/media-library.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
       {
         path: 'song-edit',
         component: SongEditComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'media-library',
+        component: MediaLibraryComponent,
         canActivate: [AuthGuard]
       }
     ]

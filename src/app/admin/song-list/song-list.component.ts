@@ -1,17 +1,16 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {SongService} from '../../song.service';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Router} from '@angular/router';
 import {ISong} from '../../song';
 import {SelectionModel} from '@angular/cdk/collections';
-import {PostDialogComponent} from '../post-dialog/post-dialog.component';
-import {Dialog} from 'primeng/dialog';
 import {SongEditComponent} from '../song-edit/song-edit.component';
 
 @Component({
   selector: 'app-song-list',
   templateUrl: './song-list.component.html',
   styleUrls: ['./song-list.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SongListComponent implements OnInit, AfterViewInit {
   public songList;

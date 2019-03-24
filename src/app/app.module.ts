@@ -13,7 +13,7 @@ import {
   MatCardModule,
   MatCheckboxModule,
   MatDialogModule,
-  MatDividerModule,
+  MatDividerModule, MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -42,6 +42,7 @@ import {MatFileUploadModule} from 'angular-material-fileupload';
 import {SongEditComponent} from './admin/song-edit/song-edit.component';
 import {ButtonModule, CoreModule, InputModule, ToasterModule} from 'truly-ui';
 import {DropdownModule} from 'primeng/primeng';
+import { MediaLibraryComponent } from './admin/media-library/media-library.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {DropdownModule} from 'primeng/primeng';
     SongListComponent,
     CreateSongComponent,
     PostDialogComponent,
-    SongEditComponent
+    SongEditComponent,
+    MediaLibraryComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +92,8 @@ import {DropdownModule} from 'primeng/primeng';
     CoreModule.forRoot({theme: 'default'}),
     InputModule.forRoot(),
     ToasterModule.forRoot(),
-    DropdownModule
+    DropdownModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
