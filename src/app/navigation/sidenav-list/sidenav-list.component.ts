@@ -23,4 +23,8 @@ export class SidenavListComponent implements OnInit {
   showCreateForm() {
     this.router.navigate(['/home/create-song']);
   }
+
+  showMediaLibrary() {
+    this.router.navigate(['/home/media-library']);
+  }
 }
