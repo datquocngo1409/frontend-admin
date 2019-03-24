@@ -41,6 +41,7 @@ import { PostDialogComponent } from './admin/post-dialog/post-dialog.component';
 import {MatFileUploadModule} from 'angular-material-fileupload';
 import {SongEditComponent} from './admin/song-edit/song-edit.component';
 import {ButtonModule, CoreModule, InputModule, ToasterModule} from 'truly-ui';
+import {DropdownModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import {ButtonModule, CoreModule, InputModule, ToasterModule} from 'truly-ui';
     CoreModule.forRoot({theme: 'default'}),
     InputModule.forRoot(),
     ToasterModule.forRoot(),
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent],

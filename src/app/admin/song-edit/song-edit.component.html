@@ -1,106 +1,55 @@
-<div class="example-container mat-elevation-z8">
-  <div class="example-header">
+<div mat-dialog-content>
+  <form class="example-form" [formGroup]="formSong" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-      <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value"
-              (click)="filter.value=''; applyFilter('');">
-        <mat-icon>close</mat-icon>
-      </button>
+      <input matInput placeholder="Name" type="text" required name="name" formControlName="name" [value]="">
     </mat-form-field>
-    <mat-card class="card">
-      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-        <h3>Edit Song</h3>
-      </mat-card-title>
-      <mat-card-content>
-        <div class="example-container mat-elevation-z8">
-          <mat-table #table [dataSource]="songList">
+    <mat-form-field>
+      <textarea matInput placeholder="Description" required name="body" type="text"
+                formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Singer" type="text" required name="name" formControlName="singer_name">
+    </mat-form-field>
+    <label for="singleFile">Upload Image</label>
+    <input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue" (change)="onSelectImage($event)"/>
+    <mat-file-upload-queue #fileUploadQueue
+                           [fileAlias]="'file'"
+                           [httpUrl]="'http://localhost:8080/images'"
+                           (click)="clickUpImage()"
+    >
 
-            <!--CheckBox column-->
-
-            <ng-container matColumnDef="select">
-              <mat-header-cell mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="$event ? masterToggle() : null"
-                              [checked]="selection.hasValue() && isAllSelected()"
-                              [indeterminate]="selection.hasValue() && !isAllSelected()"
-                              [aria-label]="checkboxLabel()">
-                </mat-checkbox>
-              </mat-header-cell>
-              <mat-cell *matCellDef="let row">
-                <mat-checkbox (click)="$event.stopPropagation()"
-                              (change)="$event ? selection.toggle(row) : null"
-                              [checked]="selection.isSelected(row)"
-                              [aria-label]="checkboxLabel(row)">
-                </mat-checkbox>
-              </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="id">
-              <mat-header-cell *matHeaderCellDef style="text-align: center"> ID</mat-header-cell>
-              <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="name">
-              <mat-header-cell *matHeaderCellDef style="text-align: center"> Name</mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <mat-form-field floatLabel="never">
-                  <input matInput placeholder="Name" [value]="element.name" [(ngModel)]="element.name">
-                </mat-form-field>
-              </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="description">
-              <mat-header-cell *matHeaderCellDef style="text-align: center">Description</mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <mat-form-field floatLabel="never">
-                  <input matInput placeholder="Description" [value]="element.description"
-                         [(ngModel)]="element.description">
-                </mat-form-field>
-              </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="singer-name">
-              <mat-header-cell *matHeaderCellDef style="text-align: center"> Singer</mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <mat-form-field floatLabel="never">
-                  <input matInput placeholder="Singer" [value]="element.singer_name" [(ngModel)]="element.singer_name">
-                </mat-form-field>
-              </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="mp3file">
-              <mat-header-cell [ngClass]="'customWidthClass'" *matHeaderCellDef style="text-align: center"> Mp3File
-              </mat-header-cell>
-              <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass'">
-                <audio controls>
-                  <source src="http://localhost:8080/mp3files/{{element.mp3File.name}}/raw" type="audio/mpeg"
-                          style="width: 100px">
-                </audio>
-              </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="image">
-              <mat-header-cell *matHeaderCellDef> Image</mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <img src="http://localhost:8080/images/{{element.image.name}}/raw" style="width: 60px; height: auto">
-              </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="category">
-              <mat-header-cell *matHeaderCellDef> Category</mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <mat-form-field floatLabel="never">
-                  <mat-select>
-                    <mat-option *ngFor="let element of categoryList" [value]="element">{{element.name}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="edit">
-              <mat-header-cell *matHeaderCellDef> State</mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
-              </mat-cell>
-            </ng-container>
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </mat-table>
-        </div>
-      </mat-card-content>
-      <mat-paginator [pageSizeOptions]="[1, 2, 3]" showFirstLastButtons [pageSize]="1"></mat-paginator>
-    </mat-card>
-  </div>
+      <mat-file-upload [file]="file" [id]="i"
+                       *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+    </mat-file-upload-queue>
+    <mat-form-field>
+      <mat-select placeholder="Image Choose" required formControlName="image" (click)="loadImageSelect()">
+        <mat-option *ngFor="let image of imageList" [value]="image">{{image.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <label for="singleFile">Upload Mp3</label>
+    <input id="singleFile1" type="file" [fileUploadInputFor]="fileUploadQueue1"/>
+    <mat-file-upload-queue #fileUploadQueue1
+                           [fileAlias]="'file'"
+                           [httpUrl]="'http://localhost:8080/mp3files'"
+                           (click)="clickUpMp3()"
+    >
+      <mat-file-upload [file]="file" [id]="i"
+                       *ngFor="let file of fileUploadQueue1.files; let i = index"></mat-file-upload>
+    </mat-file-upload-queue>
+    <mat-form-field>
+      <mat-select placeholder="Mp3 File Choose" required formControlName="mp3File" (click)="loadMp3Select()">
+        <mat-option *ngFor="let mp3File of mp3FileList" [value]="mp3File">{{mp3File.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!--<input matInput placeholder="Image" type="file" required name="name" [(ngModel)]="formCreate.image">-->
+    <mat-form-field>
+      <mat-select placeholder="Post Category" required formControlName="songCategory">
+        <mat-option *ngFor="let category of categoryList" [value]="category">{{category.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary">Save</button>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button>
 </div>

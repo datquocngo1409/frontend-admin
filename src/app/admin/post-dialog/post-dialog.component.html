@@ -23,7 +23,7 @@
                        *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
     </mat-file-upload-queue>
     <mat-form-field>
-      <mat-select placeholder="Image Choose" required name="image" formControlName="image" (click)="loadImageSelect()">
+      <mat-select placeholder="Image Choose" required formControlName="image" (click)="loadImageSelect()">
         <mat-option *ngFor="let image of imageList" [value]="image">{{image.name}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -38,13 +38,13 @@
                        *ngFor="let file of fileUploadQueue1.files; let i = index"></mat-file-upload>
     </mat-file-upload-queue>
     <mat-form-field>
-      <mat-select placeholder="Mp3 File Choose" required name="mp3File" formControlName="mp3File" (click)="loadMp3Select()">
+      <mat-select placeholder="Mp3 File Choose" required formControlName="mp3File" (click)="loadMp3Select()">
         <mat-option *ngFor="let mp3File of mp3FileList" [value]="mp3File">{{mp3File.name}}</mat-option>
       </mat-select>
     </mat-form-field>
     <!--<input matInput placeholder="Image" type="file" required name="name" [(ngModel)]="formCreate.image">-->
     <mat-form-field>
-      <mat-select placeholder="Post Category" required name="category" formControlName="songCategory">
+      <mat-select placeholder="Post Category" required formControlName="songCategory">
         <mat-option *ngFor="let category of categoryList" [value]="category">{{category.name}}</mat-option>
       </mat-select>
     </mat-form-field>

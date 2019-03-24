@@ -1,31 +1,13 @@
-.card {
-  min-width: 1000px;
-}
-
-.example-container {
+.example-form {
   display: flex;
   flex-direction: column;
-  max-height: 500px;
-  min-width: 100%;
 }
 
-.mat-table {
-  overflow: auto;
-  max-height: 500px;
+.example-form > * {
+  width: 100%;
 }
 
-a {
-  cursor: pointer;
+.close {
+  width: 100%;
 }
 
-mat-header-cell mat-cell button{
-  display:flex;
-}
-
-.customWidthClass {
-  flex: 0 0 300px;
-  padding: 8px 8px 8px 0;
-}
-/deep/ .mat-form-field {
-  width: 90%!important;
-}

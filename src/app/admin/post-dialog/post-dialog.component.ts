@@ -27,17 +27,6 @@ export class PostDialogComponent implements OnInit {
   image: IImage;
   mp3File: IMp3File;
   name: string;
-  message = '';
-
-  formCreate: {
-    name: '',
-    description: '',
-    singer_name: '',
-    mp3File: '',
-    image: '',
-    songCategory: ''
-  };
-
   formSong: FormGroup;
   public event: EventEmitter<any> = new EventEmitter();
   uploadedMp3 = false;
@@ -73,22 +62,18 @@ export class PostDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    // const fb = new FormData();
-    // const fb1 = new FormData();
     this.imageService.getImages().subscribe(next => this.imageList = next);
     this.mp3FileService.getMp3Files().subscribe(next => this.mp3FileList = next);
-    // fb.append('file', this.fileImg);
-    // fb1.append('file', this.fileMp3);
     const {value} = this.formSong;
     this.songService.createSong(value).subscribe(() => {
       this.dialogRef.close();
     });
   }
   onClick( event ) {
-    this.toasterService.information({
+    this.toasterService.success({
       title: 'Created successful!',
       message: 'Check list items...',
-      position: 'top-right',
+      position: 'bottom-right',
       width: '400px',
       height: '70px',
       progress: true,

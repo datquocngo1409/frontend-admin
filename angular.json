@@ -28,6 +28,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "src/theme.scss",
               "node_modules/@angular/cdk/overlay-prebuilt.css",
               "node_modules/truly-ui/css/icons/dx-icons/css/icons.scss",
               "node_modules/truly-ui/css/icons/fa-icons/css/icons.scss",
