@@ -1,0 +1,15 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    <app-sidenav-list-user></app-sidenav-list-user>
+    <!--this is a place for us to add side-nav code-->
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header-user (sidenavToggle)="sidenav.toggle()"></app-header-user>
+    <!--in here all the content must reside. We will add a navigation header as well-->
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

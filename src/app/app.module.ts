@@ -43,6 +43,12 @@ import {SongEditComponent} from './admin/song-edit/song-edit.component';
 import {ButtonModule, CoreModule, InputModule, ToasterModule} from 'truly-ui';
 import {DropdownModule} from 'primeng/primeng';
 import {LoginUserComponent} from './login-user/login-user.component';
+import {HomeUserComponent} from './home-user/home.component';
+import {SidenavListUserComponent} from './navigation-user/sidenav-list-user/sidenav-list.component';
+import {HeaderUserComponent} from './navigation-user/header-user/header.component';
+import {SongListUserComponent} from './user/song-list-user/song-list.component';
+import {InformationUserComponent} from './user/information-user/information.component';
+import {ListTopComponent} from './user/list-top/list-top.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +62,13 @@ import {LoginUserComponent} from './login-user/login-user.component';
     SongListComponent,
     CreateSongComponent,
     PostDialogComponent,
-    SongEditComponent
+    SongEditComponent,
+    HomeUserComponent,
+    SidenavListUserComponent,
+    HeaderUserComponent,
+    SongListUserComponent,
+    InformationUserComponent,
+    ListTopComponent
   ],
   imports: [
     BrowserModule,
