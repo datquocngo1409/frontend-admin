@@ -42,11 +42,13 @@ import {MatFileUploadModule} from 'angular-material-fileupload';
 import {SongEditComponent} from './admin/song-edit/song-edit.component';
 import {ButtonModule, CoreModule, InputModule, ToasterModule} from 'truly-ui';
 import {DropdownModule} from 'primeng/primeng';
+import {LoginUserComponent} from './login-user/login-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    LoginUserComponent,
     HomeComponent,
     HeaderComponent,
     SidenavListComponent,
