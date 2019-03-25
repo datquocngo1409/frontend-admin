@@ -13,7 +13,14 @@ import {
   MatCheckboxModule,
   MatListModule,
   MatSidenavModule,
-  MatSlideToggleModule, MatTabsModule, MatDividerModule, MatSelectModule, MatOptionModule, MatPaginatorModule, MatSortModule
+  MatSlideToggleModule,
+  MatTabsModule,
+  MatDividerModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatGridListModule
 } from '@angular/material';
 @NgModule({
   imports: [
@@ -36,7 +43,8 @@ import {
     MatSelectModule,
     MatOptionModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatGridListModule
   ],
   exports: [
     CommonModule,
@@ -58,7 +66,8 @@ import {
     MatSelectModule,
     MatOptionModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatGridListModule
   ],
 })
 export class MaterialModule { }

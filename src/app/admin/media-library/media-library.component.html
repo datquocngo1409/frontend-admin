@@ -1,0 +1,7 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between">
+  <div fxLayout="row wrap" (click)="alert()">
+    <ng-container *ngFor="let image of images">
+      <img src="http://localhost:8080/images/{{image.name}}/raw">
+    </ng-container>
+  </div>
+</div>

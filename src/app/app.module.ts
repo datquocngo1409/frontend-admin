@@ -13,7 +13,7 @@ import {
   MatCardModule,
   MatCheckboxModule,
   MatDialogModule,
-  MatDividerModule,
+  MatDividerModule, MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -42,19 +42,12 @@ import {MatFileUploadModule} from 'angular-material-fileupload';
 import {SongEditComponent} from './admin/song-edit/song-edit.component';
 import {ButtonModule, CoreModule, InputModule, ToasterModule} from 'truly-ui';
 import {DropdownModule} from 'primeng/primeng';
-import {LoginUserComponent} from './login-user/login-user.component';
-import {HomeUserComponent} from './home-user/home.component';
-import {SidenavListUserComponent} from './navigation-user/sidenav-list-user/sidenav-list.component';
-import {HeaderUserComponent} from './navigation-user/header-user/header.component';
-import {SongListUserComponent} from './user/song-list-user/song-list.component';
-import {InformationUserComponent} from './user/information-user/information.component';
-import {ListTopComponent} from './user/list-top/list-top.component';
+import { MediaLibraryComponent } from './admin/media-library/media-library.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LoginUserComponent,
     HomeComponent,
     HeaderComponent,
     SidenavListComponent,
@@ -63,12 +56,7 @@ import {ListTopComponent} from './user/list-top/list-top.component';
     CreateSongComponent,
     PostDialogComponent,
     SongEditComponent,
-    HomeUserComponent,
-    SidenavListUserComponent,
-    HeaderUserComponent,
-    SongListUserComponent,
-    InformationUserComponent,
-    ListTopComponent
+    MediaLibraryComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +92,8 @@ import {ListTopComponent} from './user/list-top/list-top.component';
     CoreModule.forRoot({theme: 'default'}),
     InputModule.forRoot(),
     ToasterModule.forRoot(),
-    DropdownModule
+    DropdownModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

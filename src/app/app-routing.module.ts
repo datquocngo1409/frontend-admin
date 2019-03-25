@@ -7,11 +7,7 @@ import {InformationComponent} from './admin/information/information.component';
 import {SongListComponent} from './admin/song-list/song-list.component';
 import {CreateSongComponent} from './admin/create-song/create-song.component';
 import {SongEditComponent} from './admin/song-edit/song-edit.component';
-import {LoginUserComponent} from './login-user/login-user.component';
-import {HomeUserComponent} from './home-user/home.component';
-import {InformationUserComponent} from './user/information-user/information.component';
-import {SongListUserComponent} from './user/song-list-user/song-list.component';
-import {ListTopComponent} from './user/list-top/list-top.component';
+import {MediaLibraryComponent} from './admin/media-library/media-library.component';
 
 const routes: Routes = [
   {
@@ -42,31 +38,14 @@ const routes: Routes = [
         path: 'song-edit',
         component: SongEditComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'media-library',
+        component: MediaLibraryComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },
-  {
-    path: 'login',
-    component: LoginUserComponent
-  },
-  {
-    path: '',
-    component: HomeUserComponent,
-    children: [
-      {
-        path: 'information',
-        component: InformationUserComponent
-      },
-      {
-        path: 'song-list',
-        component: SongListUserComponent
-      },
-      {
-        path: 'list-top',
-        component: ListTopComponent
-      }
-    ]
-  }
 ];
 
 @NgModule({
