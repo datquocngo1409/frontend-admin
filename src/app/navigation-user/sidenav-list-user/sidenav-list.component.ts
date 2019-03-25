@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,11 +8,18 @@ import {Router} from '@angular/router';
 })
 export class SidenavListUserComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router) {
+  }
+
+  public logined = false;
 
   ngOnInit() {
+    if (localStorage.getItem('user')) {
+      this.logined = true;
+    }
   }
-  public showInformation () {
+
+  public showInformation() {
     this.router.navigate(['/information']);
   }
 
@@ -22,5 +29,13 @@ export class SidenavListUserComponent implements OnInit {
 
   showListTop() {
     this.router.navigate(['/list-top']);
+  }
+
+  showFavoriteSong() {
+
+  }
+
+  showListNew() {
+
   }
 }

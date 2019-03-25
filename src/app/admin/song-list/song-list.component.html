@@ -96,7 +96,7 @@
       <div>
       <mat-toolbar>
         <mat-toolbar-row>
-          <button mat-raised-button color="primary">Delete All</button>
+          <button mat-raised-button color="primary" (click)="deleteAll()">Delete All</button>
           <mat-paginator class="paging" [pageSize]="3" [pageSizeOptions]="[1, 2, 3]" matSuffix></mat-paginator>
         </mat-toolbar-row>
       </mat-toolbar>

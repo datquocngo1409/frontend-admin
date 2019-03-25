@@ -16,8 +16,9 @@ import {SelectionModel} from '@angular/cdk/collections';
 export class SongListUserComponent implements OnInit, AfterViewInit {
   public songList;
   public selection;
+  selectedSong: ISong[] = [];
   ELEMENT_DATA: ISong[] = [];
-  displayedColumns: string[] = ['select', 'id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'edit', 'delete'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatPaginator;

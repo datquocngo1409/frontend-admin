@@ -9,13 +9,18 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
   @Output() public sidenavToggle = new EventEmitter();
 
-  constructor(public router: Router) { }
+  constructor(public router: Router) {
+  }
 
   ngOnInit() {
   }
 
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
-  }
+  };
 
+  logout() {
+    localStorage.removeItem('admin');
+    this.router.navigate(['/admin']);
+  }
 }

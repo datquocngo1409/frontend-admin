@@ -29,6 +29,9 @@ export class LoginUserComponent implements OnInit {
     let userFor;
     for (userFor of this.userList) {
       if (username === userFor.username && password === userFor.password) {
+        this.username = username;
+        this.password = password;
+        localStorage.setItem('user', JSON.stringify({token: 'jwt will come later', name: username}));
         this.router.navigate(['']);
       }
     }
