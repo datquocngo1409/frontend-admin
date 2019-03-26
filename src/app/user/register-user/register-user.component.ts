@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {IAvatar} from '../../avatar';
 import {AvatarService} from '../../avatar.service';
 import {MAT_DIALOG_DATA, MatDialogRef, MatPaginator} from '@angular/material';
+import {ToasterService} from 'truly-ui';
 
 @Component({
   selector: 'app-register-user',
@@ -13,9 +14,11 @@ import {MAT_DIALOG_DATA, MatDialogRef, MatPaginator} from '@angular/material';
   styleUrls: ['./register-user.component.scss'],
 })
 export class RegisterUserComponent implements OnInit {
+  fileAvatar: File;
   formUser: FormGroup;
   userList: IUser[] = [];
   avatarList: IAvatar[] = [];
+  user: IUser = null;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -25,7 +28,8 @@ export class RegisterUserComponent implements OnInit {
     private userService: UserService,
     private avatarService: AvatarService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toasterService: ToasterService
   ) {
   }
 
@@ -33,19 +37,41 @@ export class RegisterUserComponent implements OnInit {
     this.userService.getUsers().subscribe(next => this.userList = next);
     this.avatarService.getAvatars().subscribe(next => this.avatarList = next);
     this.formUser = this.fb.group({
-      username: ['', Validators.required, Validators.minLength(3)],
-      password: ['', Validators.required, Validators.minLength(3)],
-      name: ['', Validators.required, Validators.minLength(3)],
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       favouriteMusic: [''],
-      email: ['', Validators.required, Validators.email],
-      address: ['', Validators.required, Validators.minLength(3)],
+      email: ['', [Validators.required, Validators.email]],
+      address: ['', [Validators.required, Validators.minLength(3)]],
       avatar: [''],
       male: ['']
     });
   }
 
   onSubmit() {
+    const {value} = this.formUser;
+    this.userService.createUser(value).subscribe(() => this.dialogRef.close());
+  }
 
+  onNoClick() {
+    this.dialogRef.close();
+  }
+
+  loadAvatarSelect() {
+    this.avatarService.getAvatars().subscribe(next => this.avatarList = next);
+  }
+
+  onClick( event ) {
+    this.toasterService.success({
+      title: 'Created successful!',
+      message: 'Check list items...',
+      position: 'bottom-right',
+      width: '400px',
+      height: '70px',
+      progress: true,
+      showIcon: true,
+      time: 2000,
+    });
   }
 }
 

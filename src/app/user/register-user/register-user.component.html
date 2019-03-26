@@ -4,32 +4,32 @@
 
     <!--//Username-->
     <mat-form-field>
-      <input matInput type="text" placeholder="Username" required name="name" formControlName="username" [value]="">
+      <input matInput type="text" placeholder="Username" required name="name" formControlName="username">
     </mat-form-field>
 
     <!--//Password-->
     <mat-form-field>
-      <input matInput type="password" placeholder="Password" required name="name" formControlName="password" [value]="">
+      <input matInput type="password" placeholder="Password" required name="name" formControlName="password">
     </mat-form-field>
 
     <!--//Name-->
     <mat-form-field>
-      <input matInput type="text" placeholder="Name" required name="name" formControlName="name" [value]="">
+      <input matInput type="text" placeholder="Name" required name="name" formControlName="name">
     </mat-form-field>
 
     <!--//Favourite Music-->
     <mat-form-field>
-      <input matInput type="text" placeholder="Favourite Music" required name="name" formControlName="favouriteMusic" [value]="">
+      <input matInput type="text" placeholder="Favourite Music" required name="name" formControlName="favouriteMusic">
     </mat-form-field>
 
     <!--//Email-->
     <mat-form-field>
-      <input matInput type="email" placeholder="Email" required name="name" formControlName="email" [value]="">
+      <input matInput type="email" placeholder="Email" required name="name" formControlName="email">
     </mat-form-field>
 
     <!--//Address-->
     <mat-form-field>
-      <input matInput type="text" placeholder="Address" required name="name" formControlName="address" [value]="">
+      <input matInput type="text" placeholder="Address" required name="name" formControlName="address">
     </mat-form-field>
 
     <!--//Male-->
@@ -41,16 +41,16 @@
     </mat-form-field>
 
     <!--//UPLOAD Avatar-->
-    <!--<label for="singleFile">Upload Avatar</label>-->
-    <!--<input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue" (change)="onSelectAvatar($event)"/>-->
-    <!--<mat-file-upload-queue #fileUploadQueue-->
-                           <!--[fileAlias]="'file'"-->
-                           <!--[httpUrl]="'http://localhost:8080/avatars'"-->
-                           <!--(click)="clickUpAvatar()">-->
+    <label for="singleFile">Upload Avatar</label>
+    <input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue" (change)="onSelectAvatar($event)"/>
+    <mat-file-upload-queue #fileUploadQueue
+                           [fileAlias]="'file'"
+                           [httpUrl]="'http://localhost:8080/avatars'"
+                           (click)="clickUpAvatar()">
 
-      <!--<mat-file-upload [file]="file" [id]="i"-->
-                       <!--*ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>-->
-    <!--</mat-file-upload-queue>-->
+      <mat-file-upload [file]="file" [id]="i"
+                       *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+    </mat-file-upload-queue>
 
     <!--//Choose Avatar-->
     <mat-form-field>
@@ -58,7 +58,7 @@
         <mat-option *ngFor="let avatar of avatarList" [value]="avatar">{{avatar.name}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button type="submit" color="primary">Save</button>
+    <button mat-raised-button type="submit" color="primary" (click)="onClick($event)">Save</button>
     <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button>
   </form>
 </div>
