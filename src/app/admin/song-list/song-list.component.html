@@ -2,7 +2,7 @@
   <div class="header-filter">
     <div class="container" fxLayout="row" fxLayoutAlign="center center">
       <mat-form-field>
-        <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Search">
         <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value"
                 (click)="filter.value=''; applyFilter('');">
           <mat-icon>close</mat-icon>
@@ -43,7 +43,7 @@
                 <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
               </ng-container>
               <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef style="text-align: center"> Name</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef style="text-align: center" mat-sort-header> Name</mat-header-cell>
                 <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
               </ng-container>
               <ng-container matColumnDef="description">
