@@ -8,6 +8,12 @@ import {SongListComponent} from './admin/song-list/song-list.component';
 import {CreateSongComponent} from './admin/create-song/create-song.component';
 import {SongEditComponent} from './admin/song-edit/song-edit.component';
 import {MediaLibraryComponent} from './admin/media-library/media-library.component';
+import {HomeUserComponent} from './home-user/home.component';
+import {LoginUserComponent} from './login-user/login-user.component';
+import {ListTopComponent} from './user/list-top/list-top.component';
+import {SongListUserComponent} from './user/song-list-user/song-list.component';
+import {InformationUserComponent} from './user/information-user/information.component';
+import {RegisterUserComponent} from './user/register-user/register-user.component';
 
 const routes: Routes = [
   {
@@ -46,6 +52,32 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: '',
+    component: HomeUserComponent,
+    children: [
+      {
+        path: 'list-top',
+        component: ListTopComponent
+      },
+      {
+        path: 'song-list',
+        component: SongListUserComponent
+      },
+      {
+        path: 'infomation-user',
+        component: InformationUserComponent
+      }
+    ]
+  },
+  {
+    path: 'login',
+    component: LoginUserComponent
+  },
+  {
+    path: 'register',
+    component: RegisterUserComponent
+  }
 ];
 
 @NgModule({

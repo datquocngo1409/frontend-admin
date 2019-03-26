@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {LoginUserComponent} from '../../login-user/login-user.component';
+import {MatDialog} from '@angular/material';
+import {RegisterUserComponent} from '../../user/register-user/register-user.component';
 
 @Component({
   selector: 'app-header-user',
@@ -13,7 +15,8 @@ export class HeaderUserComponent implements OnInit {
   public username = localStorage.getItem('user');
 
   constructor(
-    public router: Router
+    public router: Router,
+    public dialog: MatDialog
   ) {
   }
 
@@ -32,7 +35,8 @@ export class HeaderUserComponent implements OnInit {
   logout() {
     localStorage.removeItem('user');
     localStorage.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
+    this.logined = false;
   }
 
   login() {
@@ -40,6 +44,6 @@ export class HeaderUserComponent implements OnInit {
   }
 
   register() {
-    this.router.navigate(['/register']);
+    const dialogRef = this.dialog.open(RegisterUserComponent, {width: '600px'});
   }
 }
