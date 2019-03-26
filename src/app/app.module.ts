@@ -51,6 +51,7 @@ import {HeaderUserComponent} from './navigation-user/header-user/header.componen
 import {SidenavListUserComponent} from './navigation-user/sidenav-list-user/sidenav-list.component';
 import {HomeUserComponent} from './home-user/home.component';
 import {RegisterUserComponent} from './user/register-user/register-user.component';
+import {NewListUserComponent} from './user/new-list/new-list.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import {RegisterUserComponent} from './user/register-user/register-user.componen
     HeaderUserComponent,
     SidenavListUserComponent,
     HomeUserComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    NewListUserComponent
   ],
   imports: [
     BrowserModule,

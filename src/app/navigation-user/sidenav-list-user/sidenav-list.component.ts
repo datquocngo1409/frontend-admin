@@ -36,6 +36,6 @@ export class SidenavListUserComponent implements OnInit {
   }
 
   showListNew() {
-
+    this.router.navigate(['/new-list']);
   }
 }
