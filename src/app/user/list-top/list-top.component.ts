@@ -91,5 +91,11 @@ export class ListTopComponent implements OnInit, AfterViewInit {
   //   this.router.navigate(['home/song-list']);
   //   location.reload();
   // }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.songList.filter = filterValue;
+  }
 }
 

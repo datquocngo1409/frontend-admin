@@ -1,17 +1,18 @@
 .card {
   min-width: 1000px;
+  max-height: 100%;
 }
 
 .example-container {
   display: flex;
   flex-direction: column;
-  max-height: 500px;
+  max-height: 2000px;
   min-width: 100%;
 }
 
 .mat-table {
   overflow: auto;
-  max-height: 500px;
+  max-height: 2000px;
 }
 
 a {
@@ -28,6 +29,24 @@ mat-header-cell mat-cell button{
 }
 
 .paging {
-   flex: 1 1 auto;
+  flex: 1 1 auto;
   margin: 0;
+}
+
+.alignTitle {
+  text-align: center;
+  font-weight: bold;
+}
+
+.header-filter > * {
+  width: 1000px;
+  display: flex;
+}
+
+mat-card {
+  max-height: 2000px;
+}
+
+mat-card-content {
+  max-height: 2000px;
 }

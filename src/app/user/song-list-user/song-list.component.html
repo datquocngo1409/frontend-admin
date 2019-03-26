@@ -1,7 +1,7 @@
 <div class="example-container mat-elevation-z8">
-  <div class="example-header">
+  <div class="container" fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field>
-      <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Search">
       <button mat-icon-button matSuffix aria-label="clear" *ngIf="filter.value"
               (click)="filter.value=''; applyFilter('');">
         <mat-icon>close</mat-icon>
@@ -105,3 +105,5 @@
     </div>
   </div>
 </div>
+
+<mat-toolbar>DNV Group</mat-toolbar>
