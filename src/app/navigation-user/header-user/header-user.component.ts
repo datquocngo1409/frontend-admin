@@ -49,6 +49,6 @@ export class HeaderUserComponent implements OnInit {
   }
 
   userInfomation() {
-    const dialogRef = this.dialog.open(InformationUserComponent, {width: '600px'});
+    const dialogRef = this.dialog.open(InformationUserComponent, {minWidth: '400px'});
   }
 }

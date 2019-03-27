@@ -4,6 +4,8 @@ import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/mat
 import {Router} from '@angular/router';
 import {ISong} from '../../song';
 import {SelectionModel} from '@angular/cdk/collections';
+import {IUser} from '../../user';
+import {UserService} from '../../user.service';
 // import {PostDialogComponent} from '../post-dialog/post-dialog.component';
 // import {Dialog} from 'primeng/dialog';
 // import {SongEditComponent} from '../song-edit/song-edit.component';
@@ -14,31 +16,27 @@ import {SelectionModel} from '@angular/cdk/collections';
   styleUrls: ['./new-list.component.scss'],
 })
 export class NewListUserComponent implements OnInit, AfterViewInit {
+  public username = localStorage.getItem('user');
+  userList: IUser[] = [];
+  user: IUser;
+  ArrayFavorite: number[] = [];
   public songList;
   public selection;
   selectedSong: ISong[] = [];
   ELEMENT_DATA: ISong[] = [];
-  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'favorite'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatPaginator;
 
   constructor(public songService: SongService,
               public router: Router,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              public userService: UserService
+  ) {
     this.songList = new MatTableDataSource<ISong>(this.ELEMENT_DATA);
     this.selection = new SelectionModel<ISong[]>(true, []);
   }
-
-  // removeSelectedRows(song: ISong) {
-  //   this.selection.selected.forEach(item => {
-  //       const index = this.songService.getSongById(song.id);
-  //       console.log(this.songService.getSongById(song.id));
-  //       this.selection = new SelectionModel<ISong[]>(true, []);
-  //       this.selection = new MatTableDataSource<ISong>(this.ELEMENT_DATA);
-  //     }
-  //   );
-  // }
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -63,9 +61,10 @@ export class NewListUserComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.songService.getSongs().subscribe(next => (this.songList.data = next));
-    this.songList.sort(function (a, b) {
-      return a.id - b.id;
-    });
+    this.userService.getUsers().subscribe(next => this.userList = next);
+    this.username = this.username.split('{"token":"jwt will come later","name":"').toString();
+    this.username = this.username.substring(1, this.username.length - 2);
+    this.userService.getUserByUsername(this.username).subscribe(next => this.user = next);
   }
 
   applyFilter(filterValue: string) {
@@ -79,22 +78,36 @@ export class NewListUserComponent implements OnInit, AfterViewInit {
     this.songList.sort = this.sort;
   }
 
-  // openDialog(song: ISong): void {
-  //   const dialogRef = this.dialog.open(SongEditComponent, {
-  //     width: '600px',
-  //   });
-  //   dialogRef.componentInstance.event.subscribe((result) => {
-  //     this.songService.createSong(result.data);
-  //   });
-  //   localStorage.removeItem('editSongId');
-  //   localStorage.setItem('editSongId', song.id.toString());
-  // }
-
   deleteFunc(song: ISong) {
     this.songService.deleteSong(song.id).subscribe(() => this.songList = this.songList.filter(t => t.id !== song.id));
     alert('Deleted!');
     this.router.navigate(['home/song-list']);
     location.reload();
+  }
+
+  onMouseMove() {
+    this.ArrayFavorite = this.user.favouriteMusic.split(',').map(function (item) {
+      return parseInt(item, 10);
+    });
+  }
+
+  like(id: number) {
+    if (!this.isLiked(id)) {
+      this.ArrayFavorite.push(id);
+      this.user.favouriteMusic = this.ArrayFavorite.toString();
+      this.userService.updateUser(this.user).subscribe();
+    } else {
+      this.ArrayFavorite.splice(this.ArrayFavorite.indexOf(id), 1);
+      this.user.favouriteMusic = this.ArrayFavorite.toString();
+      this.userService.updateUser(this.user).subscribe();
+    }
+  }
+
+  isLiked(id: number) {
+    if (this.ArrayFavorite.includes(id)) {
+      return true;
+    }
+    return false;
   }
 }
 

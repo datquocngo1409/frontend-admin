@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<div (mousemove)="onMouseMove()" class="example-container mat-elevation-z8">
   <div class="container" fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field>
       <input matInput #filter (keyup)="applyFilter($event.target.value)" placeholder="Search">
@@ -71,6 +71,13 @@
               <ng-container matColumnDef="category">
                 <mat-header-cell *matHeaderCellDef> Category</mat-header-cell>
                 <mat-cell *matCellDef="let element">{{element.songCategory.name}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="favorite">
+                <mat-header-cell *matHeaderCellDef> Add to Favorite</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <mat-icon *ngIf="isLiked(element.id)" (click)="like(element.id)">favorite_border</mat-icon>
+                  <mat-icon *ngIf="!isLiked(element.id)" (click)="like(element.id)">favorite</mat-icon>
+                </mat-cell>
               </ng-container>
               <!--<ng-container matColumnDef="edit">-->
               <!--<mat-header-cell *matHeaderCellDef> Edit</mat-header-cell>-->

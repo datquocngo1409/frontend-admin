@@ -51,7 +51,7 @@ import {SidenavListUserComponent} from './navigation-user/sidenav-list-user/side
 import {HomeUserComponent} from './home-user/home.component';
 import {RegisterUserComponent} from './user/register-user/register-user.component';
 import {NewListUserComponent} from './user/new-list/new-list.component';
-import {HeaderUserComponent} from './navigation-user/header-user/header.component';
+import {HeaderUserComponent} from './navigation-user/header-user/header-user.component';
 
 @NgModule({
   declarations: [

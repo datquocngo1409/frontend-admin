@@ -8,16 +8,16 @@
 <!--<h4>Address: {{user.address}}</h4>-->
 <!--<h4 *ngIf="user.male">Male</h4>-->
 <!--<h4 *ngIf="!user.male">Female</h4>-->
-<h3 class="title">USER {{user.name.toUpperCase()}}'S INFOMATION</h3>
+<h3 class="title">USER {{user?.name.toUpperCase()}}'S INFOMATION</h3>
 <mat-list>
-  <mat-list-item> <b>Username</b>: {{user.username}} </mat-list-item>
+  <mat-list-item> <b>Username</b>: {{user?.username}} </mat-list-item>
   <hr>
-  <mat-list-item> <b>Name</b>: {{user.name}} </mat-list-item>
+  <mat-list-item> <b>Name</b>: {{user?.name}} </mat-list-item>
   <hr>
-  <mat-list-item> <b>Email</b>: {{user.email}} </mat-list-item>
+  <mat-list-item> <b>Email</b>: {{user?.email}} </mat-list-item>
   <hr>
-  <mat-list-item> <b>Address</b>: {{user.address}} </mat-list-item>
+  <mat-list-item> <b>Address</b>: {{user?.address}} </mat-list-item>
   <hr>
-  <mat-list-item *ngIf="user.male"> <b>Sex</b>: Male </mat-list-item>
-  <mat-list-item *ngIf="!user.male"> <b>Sex</b>: Female </mat-list-item>
+  <mat-list-item *ngIf="user?.male"> <b>Sex</b>: Male </mat-list-item>
+  <mat-list-item *ngIf="!user?.male"> <b>Sex</b>: Female </mat-list-item>
 </mat-list>
