@@ -1,10 +1,23 @@
-<div style="display: flex block">
-  <canvas baseChart
-          [datasets]="lineChartData"
-          [labels]="lineChartLabels"
-          [colors]="lineChartColors"
-          [legend]="lineChartLegend"
-          [chartType]="lineChartType"
-          [plugins]="lineChartPlugins">
-  </canvas>
-</div>
+<!--<h3>INFOMATION {{user.name}}</h3>-->
+<!--<h4>ID: {{user.id}}</h4>-->
+<!--<h4>Username: {{user.username}}</h4>-->
+<!--<h4>Password: {{user.password}}</h4>-->
+<!--<h4>Name: {{user.name}}</h4>-->
+<!--<h4>Favourite Music: {{user.favouriteMusic}}</h4>-->
+<!--<h4>Email: {{user.email}}</h4>-->
+<!--<h4>Address: {{user.address}}</h4>-->
+<!--<h4 *ngIf="user.male">Male</h4>-->
+<!--<h4 *ngIf="!user.male">Female</h4>-->
+<h3 class="title">USER {{user.name.toUpperCase()}}'S INFOMATION</h3>
+<mat-list>
+  <mat-list-item> <b>Username</b>: {{user.username}} </mat-list-item>
+  <hr>
+  <mat-list-item> <b>Name</b>: {{user.name}} </mat-list-item>
+  <hr>
+  <mat-list-item> <b>Email</b>: {{user.email}} </mat-list-item>
+  <hr>
+  <mat-list-item> <b>Address</b>: {{user.address}} </mat-list-item>
+  <hr>
+  <mat-list-item *ngIf="user.male"> <b>Sex</b>: Male </mat-list-item>
+  <mat-list-item *ngIf="!user.male"> <b>Sex</b>: Female </mat-list-item>
+</mat-list>

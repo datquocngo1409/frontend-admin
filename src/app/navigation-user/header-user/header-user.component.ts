@@ -3,11 +3,12 @@ import {Router} from '@angular/router';
 import {LoginUserComponent} from '../../login-user/login-user.component';
 import {MatDialog} from '@angular/material';
 import {RegisterUserComponent} from '../../user/register-user/register-user.component';
+import {InformationUserComponent} from '../../user/information-user/information.component';
 
 @Component({
   selector: 'app-header-user',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  templateUrl: './header-user.component.html',
+  styleUrls: ['./header-user.component.scss']
 })
 export class HeaderUserComponent implements OnInit {
   @Output() public sidenavToggle = new EventEmitter();
@@ -44,6 +45,10 @@ export class HeaderUserComponent implements OnInit {
   }
 
   register() {
-    const dialogRef = this.dialog.open(RegisterUserComponent, {width: '600px'});
+    const dialogRef = this.dialog.open(RegisterUserComponent, {width: '600px', maxHeight: '1000px'});
+  }
+
+  userInfomation() {
+    const dialogRef = this.dialog.open(InformationUserComponent, {width: '600px'});
   }
 }
