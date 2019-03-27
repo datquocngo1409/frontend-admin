@@ -72,6 +72,10 @@ const routes: Routes = [
       {
         path: 'new-list',
         component: NewListUserComponent
+      },
+      {
+        path: 'infomation/:id',
+        component: InformationUserComponent
       }
     ]
   },
