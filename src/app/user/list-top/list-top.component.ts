@@ -23,7 +23,7 @@ export class ListTopComponent implements OnInit, AfterViewInit {
   public songList;
   public selection;
   ELEMENT_DATA: ISong[] = [];
-  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'favorite'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'favorite', 'listenCount'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatPaginator;

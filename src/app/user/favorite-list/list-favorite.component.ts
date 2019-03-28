@@ -80,6 +80,7 @@ export class ListFavoriteComponent implements OnInit, AfterViewInit {
       this.user.favouriteMusic = this.ArrayFavorite.toString();
       this.userService.updateUser(this.user).subscribe();
     }
+    location.reload();
   }
 
   isLiked(id: number) {

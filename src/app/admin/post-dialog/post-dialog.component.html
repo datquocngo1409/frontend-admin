@@ -48,6 +48,9 @@
         <mat-option *ngFor="let category of categoryList" [value]="category">{{category.name}}</mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Listened Count" type="text" required name="name" formControlName="listenCount" disabled>
+    </mat-form-field>
     <button mat-raised-button type="submit" color="primary" (click)="onClick($event)">Save</button>
   </form>
 </div>

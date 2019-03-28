@@ -10,4 +10,5 @@ export interface ISong {
   mp3File: IMp3File;
   image: IImage;
   songCategory: ISongCategory;
+  listenCount: number;
 }

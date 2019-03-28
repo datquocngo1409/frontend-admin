@@ -57,7 +57,8 @@ export class PostDialogComponent implements OnInit {
       singer_name: [''],
       mp3File: [''],
       image: [''],
-      songCategory: ['']
+      songCategory: [''],
+      listenCount: ['0']
     });
   }
 

@@ -16,10 +16,10 @@
         </mat-card-title>
         <mat-card-content>
           <div class="example-container mat-elevation-z8">
-            <mat-table #table [dataSource]="songList" style="text-align: center" matSort>
+            <mat-table #table [dataSource]="songList" style="text-align: center" matSort matSortActive="listenCount" matSortDirection="desc" matSortDisableClear>
 
               <ng-container matColumnDef="id">
-                <mat-header-cell *matHeaderCellDef style="text-align: center" mat-sort-header> ID</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef style="text-align: center"> ID</mat-header-cell>
                 <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
               </ng-container>
               <ng-container matColumnDef="name">
@@ -60,6 +60,10 @@
                   <mat-icon *ngIf="isLiked(element.id)" (click)="like(element.id)">favorite_border</mat-icon>
                   <mat-icon *ngIf="!isLiked(element.id)" (click)="like(element.id)">favorite</mat-icon>
                 </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="listenCount">
+                <mat-header-cell *matHeaderCellDef style="text-align: center" mat-sort-header> Listened Count</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.listenCount}}</mat-cell>
               </ng-container>
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
