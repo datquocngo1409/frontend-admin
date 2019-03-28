@@ -23,7 +23,7 @@ import {
   MatSelectModule,
   MatSidenavContainer,
   MatSidenavContent,
-  MatSidenavModule,
+  MatSidenavModule, MatSliderModule,
   MatSlideToggleModule, MatSortModule,
   MatTableModule,
   MatTabsModule,
@@ -43,6 +43,8 @@ import {SongEditComponent} from './admin/song-edit/song-edit.component';
 import {ButtonModule, CoreModule, InputModule, ToasterModule} from 'truly-ui';
 import {DropdownModule} from 'primeng/primeng';
 import { MediaLibraryComponent } from './admin/media-library/media-library.component';
+import { TrackControlsComponent } from './user/track-controls/track-controls.component';
+import { SidebarComponent } from './user/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { MediaLibraryComponent } from './admin/media-library/media-library.compo
     CreateSongComponent,
     PostDialogComponent,
     SongEditComponent,
-    MediaLibraryComponent
+    MediaLibraryComponent,
+    TrackControlsComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -88,12 +92,12 @@ import { MediaLibraryComponent } from './admin/media-library/media-library.compo
     MatFileUploadModule,
     MatPaginatorModule,
     MatSortModule,
-    ButtonModule,
     CoreModule.forRoot({theme: 'default'}),
     InputModule.forRoot(),
     ToasterModule.forRoot(),
     DropdownModule,
     MatGridListModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent],

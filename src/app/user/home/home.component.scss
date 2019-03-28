@@ -1,0 +1,11 @@
+.outer-container {
+  padding-top: 15px;
+  padding-bottom: 20px;
+  animation: fadein 0.7s;
+  width: calc(100% - 220px);
+
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}

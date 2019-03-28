@@ -1,0 +1,41 @@
+<mat-toolbar class="outer-container">
+  <div class="track-info">
+    <div class="album-artwork linkable"></div>
+    <div class="track-text">
+      <div class="track-title">Nối vòng tay lớn</div>
+      <div class="track-artist">Trịnh Công Sơn</div>
+    </div>
+    <button mat-icon-button aria-label="favorite_border">
+      <mat-icon class="favorite-border">favorite_border</mat-icon>
+    </button>
+  </div>
+  <div class="playback-controls">
+    <div class="playback-buttons">
+      <button aria-label="Skip previous" mat-icon-button>
+        <mat-icon class="skip-previous">skip_previous</mat-icon>
+      </button>
+      <button aria-label="Toggle play" mat-icon-button>
+        <mat-icon class="toggle-button">pause</mat-icon>
+      </button>
+      <button aria-label="Skip next" mat-icon-button>
+        <mat-icon class="skip-next">skip_next</mat-icon>
+      </button>
+    </div>
+    <div class="scrubber">
+      <span class="time"></span>
+      <mat-slider class="slider"></mat-slider>
+    </div>
+  </div>
+  <div class="misc-controls">
+    <button aria-label="Settings" mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button aria-label="Toggle queue" mat-icon-button>
+      <mat-icon>queue_music</mat-icon>
+    </button>
+    <button aria-label="Toggle mute" mat-icon-button>
+      <mat-icon>volume_up</mat-icon>
+    </button>
+    <mat-slider class="volume-slider"></mat-slider>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,153 @@
+.outer-container {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: hsl(0, 0%, 13%);
+  color: hsl(0, 0%, 70%);
+  flex-basis: 0;
+}
+
+.track-info {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 200;
+  letter-spacing: 0.21px;
+  line-height: 20px;
+
+  @media screen and (max-width: 599.99px) and (orientation: portrait), (max-width: 959.99px) and (orientation: landscape) {
+    flex: 1;
+  }
+}
+
+.track-text {
+  width: 40%;
+  cursor: default;
+  overflow: hidden;
+  padding-right: 10%;
+  display: block;
+}
+
+.track-title {
+  cursor: default;
+  border-width: 0 0 1px;
+  color: hsl(0, 0%, 100%);
+  display: inline;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.track-artist {
+  border-width: 0 0 1px;
+  color: hsl(0, 0%, 80%);
+  letter-spacing: 0.18px;
+  text-align: left;
+  line-height: 16px;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.album-artwork {
+  height: 60px;
+  min-width: 60px;
+  width: 60px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 5%;
+  margin-right: 10px;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: url("http://localhost:8080/images/wallpaper-4k-hinh-nen-4k-hoang-hon-tren-bien-dep_100008878.jpg/raw");
+}
+
+.linkable {
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+div.linkable {
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.playback-controls {
+  width: 40%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: hsl(0, 0%, 70%);
+}
+
+.playback-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.skip-previous {
+  color: hsl(0, 0%, 70%);
+}
+
+.toggle-button {
+  color: hsl(0, 0%, 70%);
+}
+
+.skip-next {
+  color: hsl(0, 0%, 70%);
+}
+
+.misc-controls {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.scrubber {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  color: hsl(0, 0%, 70%);
+}
+
+.slider {
+  flex: 1;
+  margin: 0 5px;
+  border-radius: 2px;
+  color: hsl(0, 0%, 70%);
+}
+
+::ng-deep .mat-slider-thumb {
+  background-color: hsl(151, 82%, 68%) !important;
+  border-radius: 50%;
+  border-width: 4px;
+}
+
+::ng-deep .mat-slider-ticks {
+  border-radius: 50px;
+  line-height: 20px;
+  background-color: hsl(151, 82%, 68%) !important;
+  background-size: 0 2px;
+}
+
+.favorite-border {
+  transform: scale(0.75);
+}
+
+.time {
+  font-size: 11px;
+  color: #b3b3b3;
+}
+
+.volume-slider {
+
+}

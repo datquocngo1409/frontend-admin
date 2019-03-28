@@ -25,4 +25,7 @@ html, body {
 
 @include mat-core();
 
+.outer-container {
+  height: calc( 100% - 100px );
+}
 
