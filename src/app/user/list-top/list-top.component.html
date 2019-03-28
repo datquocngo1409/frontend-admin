@@ -17,24 +17,6 @@
         <mat-card-content>
           <div class="example-container mat-elevation-z8">
             <mat-table #table [dataSource]="songList" style="text-align: center" matSort>
-              <!--CheckBox column-->
-
-              <!--<ng-container matColumnDef="select">-->
-              <!--<mat-header-cell mat-header-cell *matHeaderCellDef>-->
-              <!--<mat-checkbox (change)="$event ? masterToggle() : null"-->
-              <!--[checked]="selection.hasValue() && isAllSelected()"-->
-              <!--[indeterminate]="selection.hasValue() && !isAllSelected()"-->
-              <!--[aria-label]="checkboxLabel()">-->
-              <!--</mat-checkbox>-->
-              <!--</mat-header-cell>-->
-              <!--<mat-cell *matCellDef="let row">-->
-              <!--<mat-checkbox (click)="$event.stopPropagation()"-->
-              <!--(change)="$event ? selection.toggle(row) : null"-->
-              <!--[checked]="selection.isSelected(row)"-->
-              <!--[aria-label]="checkboxLabel(row)">-->
-              <!--</mat-checkbox>-->
-              <!--</mat-cell>-->
-              <!--</ng-container>-->
 
               <ng-container matColumnDef="id">
                 <mat-header-cell *matHeaderCellDef style="text-align: center" mat-sort-header> ID</mat-header-cell>
@@ -72,20 +54,6 @@
                 <mat-header-cell *matHeaderCellDef> Category</mat-header-cell>
                 <mat-cell *matCellDef="let element">{{element.songCategory.name}}</mat-cell>
               </ng-container>
-              <!--<ng-container matColumnDef="edit">-->
-              <!--<mat-header-cell *matHeaderCellDef> Edit</mat-header-cell>-->
-              <!--<mat-cell *matCellDef="let element">-->
-              <!--<button mat-raised-button color="primary" (click)="openDialog(element)">Edit</button>-->
-              <!--</mat-cell>-->
-              <!--</ng-container>-->
-              <!--<ng-container matColumnDef="delete">-->
-              <!--<mat-header-cell *matHeaderCellDef> Delete</mat-header-cell>-->
-              <!--<mat-cell *matCellDef="let element">-->
-              <!--<button mat-raised-button color="primary" (click)="deleteFunc(element)">-->
-              <!--<mat-icon class="icon">delete</mat-icon>-->
-              <!--</button>-->
-              <!--</mat-cell>-->
-              <!--</ng-container>-->
               <ng-container matColumnDef="favorite">
                 <mat-header-cell *matHeaderCellDef> Add to Favorite</mat-header-cell>
                 <mat-cell *matCellDef="let element">

@@ -52,6 +52,7 @@ import {HomeUserComponent} from './home-user/home.component';
 import {RegisterUserComponent} from './user/register-user/register-user.component';
 import {NewListUserComponent} from './user/new-list/new-list.component';
 import {HeaderUserComponent} from './navigation-user/header-user/header-user.component';
+import {ListFavoriteComponent} from './user/favorite-list/list-favorite.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import {HeaderUserComponent} from './navigation-user/header-user/header-user.com
     RegisterUserComponent,
     NewListUserComponent,
     InformationUserComponent,
+    ListFavoriteComponent
   ],
   imports: [
     BrowserModule,

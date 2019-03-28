@@ -15,6 +15,7 @@ import {SongListUserComponent} from './user/song-list-user/song-list.component';
 import {InformationUserComponent} from './user/information-user/information.component';
 import {RegisterUserComponent} from './user/register-user/register-user.component';
 import {NewListUserComponent} from './user/new-list/new-list.component';
+import {ListFavoriteComponent} from './user/favorite-list/list-favorite.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
       {
         path: 'infomation/:id',
         component: InformationUserComponent
+      },
+      {
+        path: 'favorite-song',
+        component: ListFavoriteComponent
       }
     ]
   },

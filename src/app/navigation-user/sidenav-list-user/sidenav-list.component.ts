@@ -32,7 +32,7 @@ export class SidenavListUserComponent implements OnInit {
   }
 
   showFavoriteSong() {
-
+    this.router.navigate(['/favorite-song']);
   }
 
   showListNew() {
