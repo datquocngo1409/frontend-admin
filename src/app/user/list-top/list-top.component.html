@@ -38,7 +38,7 @@
                 <mat-header-cell [ngClass]="'customWidthClass'" *matHeaderCellDef style="text-align: center"> Mp3File
                 </mat-header-cell>
                 <mat-cell *matCellDef="let element" [ngClass]="'customWidthClass'">
-                  <audio controls (ended)="addCount(element)"4>
+                  <audio controls (ended)="addCount(element)">
                     <source src="http://localhost:8080/mp3files/{{element.mp3File.name}}/raw" type="audio/mpeg"
                             style="width: 100px">
                   </audio>
