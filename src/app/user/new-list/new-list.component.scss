@@ -23,6 +23,11 @@ mat-header-cell mat-cell button{
   display:flex;
 }
 
+mat-cell {
+  text-align: center;
+  justify-content: center;
+}
+
 .customWidthClass {
   flex: 0 0 300px;
   padding: 8px 8px 8px 0;

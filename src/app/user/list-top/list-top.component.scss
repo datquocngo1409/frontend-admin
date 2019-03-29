@@ -21,6 +21,13 @@ a {
 
 mat-header-cell mat-cell button{
   display:flex;
+  text-align: center;
+  justify-content:center;
+}
+
+mat-cell {
+  text-align: center;
+  justify-content: center;
 }
 
 .customWidthClass {
