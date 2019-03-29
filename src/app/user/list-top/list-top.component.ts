@@ -81,5 +81,10 @@ export class ListTopComponent implements OnInit, AfterViewInit {
     }
     return false;
   }
+
+  addCount(element) {
+    element.listenCount++;
+    this.songService.updateSong(element).subscribe();
+  }
 }
 

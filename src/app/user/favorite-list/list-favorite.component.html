@@ -118,7 +118,7 @@
             <th>{{song.description}}</th>
             <th>{{song.singer_name}}</th>
             <th>
-              <audio controls>
+              <audio controls (ended)="addCount(element)">
                 <source src="http://localhost:8080/mp3files/{{song?.mp3File.name}}/raw" type="audio/mpeg"
                         style="width: 100px">
               </audio>
@@ -140,6 +140,8 @@
     </div>
   </div>
 </div>
+
+<fb-like url="https://www.google.com.vn"></fb-like>
 
 <mat-toolbar>
   <mat-icon (click)="router.navigate(['https://gmail.com'])">email</mat-icon>

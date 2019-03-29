@@ -110,5 +110,10 @@ export class SongListUserComponent implements OnInit, AfterViewInit {
     }
     return false;
   }
+
+  addCount(element) {
+    element.listenCount++;
+    this.songService.updateSong(element).subscribe();
+  }
 }
 

@@ -39,7 +39,8 @@
     "ts-md5": "^1.2.4",
     "tslib": "^1.9.0",
     "web-animations-js": "^2.3.1",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "jw-angular-social-buttons": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.12.0",

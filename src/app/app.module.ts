@@ -53,6 +53,7 @@ import {RegisterUserComponent} from './user/register-user/register-user.componen
 import {NewListUserComponent} from './user/new-list/new-list.component';
 import {HeaderUserComponent} from './navigation-user/header-user/header-user.component';
 import {ListFavoriteComponent} from './user/favorite-list/list-favorite.component';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 
 @NgModule({
   declarations: [
@@ -114,6 +115,7 @@ import {ListFavoriteComponent} from './user/favorite-list/list-favorite.componen
     ToasterModule.forRoot(),
     DropdownModule,
     MatGridListModule,
+    JwSocialButtonsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
