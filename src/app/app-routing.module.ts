@@ -8,11 +8,38 @@ import {SongListComponent} from './admin/song-list/song-list.component';
 import {CreateSongComponent} from './admin/create-song/create-song.component';
 import {SongEditComponent} from './admin/song-edit/song-edit.component';
 import {MediaLibraryComponent} from './admin/media-library/media-library.component';
+import {HomeUserComponent} from "./user/home-user/home-user.component";
+import {FavoriteSongComponent} from "./user/favorite-song/favorite-song.component";
+import {PodcastsComponent} from "./user/podcasts/podcasts.component";
+import {CollectionComponent} from "./collection/collection.component";
 
 const routes: Routes = [
   {
     path: 'admin',
     component: LoginComponent,
+  },
+  {
+    path: 'collection',
+    component: CollectionComponent,
+    children: [
+      {
+        path: 'favorite-song',
+        component: FavoriteSongComponent
+      },
+      {
+        path: 'podcasts',
+        component: PodcastsComponent
+      },
+    ]
+  },
+  {
+    path: 'favorite-song',
+    component: FavoriteSongComponent,
+    outlet: 'favorite'
+  },
+  {
+    path: 'podcasts',
+    component: PodcastsComponent,
   },
   {
     path: 'home',

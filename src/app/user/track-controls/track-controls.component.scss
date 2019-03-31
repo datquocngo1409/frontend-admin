@@ -135,8 +135,7 @@ div.linkable {
 ::ng-deep .mat-slider-ticks {
   border-radius: 50px;
   line-height: 20px;
-  background-color: hsl(151, 82%, 68%) !important;
-  background-size: 0 2px;
+  flood-color: hsl(151, 82%, 68%) !important;
 }
 
 .favorite-border {

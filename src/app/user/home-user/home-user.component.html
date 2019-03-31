@@ -1,0 +1,38 @@
+<section class="home-user-outer-container">
+  <nav class="nav-home">
+    <ul class="nav-home-title">
+      <li class="feature-nav-home-none-title"></li>
+      <li class="feature-nav-home-title">
+        <a class="feature-nav-home-title-name"
+           (mouseover)="isHovering = true"
+           (mouseleave)="isHovering = false"
+           (click)="showFavoriteSong()"
+           routerLink="/collection/favorite-song"
+        >FEATURED</a>
+      </li>
+      <li
+        class="feature-nav-home-title"
+      >
+        <a class="feature-nav-home-title-name"
+           (mouseover)="isHovering = true"
+           (mouseleave)="isHovering = false"
+           (click)="showPodCasts()"
+           routerLink="/collection/podcasts"
+        >PODCASTs</a>
+      </li>
+      <li class="feature-nav-home-title">
+        <a class="feature-nav-home-title-name">CHART</a>
+      </li>
+      <li class="feature-nav-home-title">
+        <a class="feature-nav-home-title-name-inline">GENRES AND MOODS</a>
+      </li>
+      <li class="feature-nav-home-title">
+        <a class="feature-nav-home-title-name">NEW RELEASE</a>
+      </li>
+      <li class="feature-nav-home-title">
+        <a class="feature-nav-home-title-name">DISCOVER</a>
+      </li>
+      <li class="feature-nav-home-none-title"></li>
+    </ul>
+  </nav>
+</section>

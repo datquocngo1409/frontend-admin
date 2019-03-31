@@ -1,0 +1,88 @@
+div {
+  color: blue;
+}
+.color-red {
+  background:  red!important;
+  display: block;
+  padding: 10px;
+}
+
+.headerGrid {
+  justify-content: space-between;
+  align-items: center;
+  animation: fadein 0.7s;
+  padding: 0 32px;
+  letter-spacing: 0.21px;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 200;
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+.header-title {
+  padding: 15px 0;
+  display: flex;
+}
+
+.header-title > h1 {
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: -0.18px;
+  line-height: 44px;
+  color: hsl(0, 0%, 100%);
+  margin: 8px 0;
+}
+
+.header-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
+  @media screen and (max-width: 599.99px) and (orientation: portrait), (max-width: 959.99px) and (orientation: landscape) {
+    grid-template-columns: repeat( auto-fill, minmax(156px, 1fr) );
+  }
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.inner-header-container {
+  display: flex;
+  flex-direction: column;
+  width: 170px;
+  @media screen and (max-width: 599.99px) and (orientation: portrait), (max-width: 959.99px) and (orientation: landscape) {
+    width: 150px;
+  }
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 20px;
+}
+
+.album-cover-container {
+  background: rgb(33, 33, 33);
+  outline: none;
+  height: 170px;
+  width: 170px;
+  @media screen and (max-width: 599.99px) and (orientation: portrait), (max-width: 959.99px) and (orientation: landscape) {
+    width: 150px;
+    height: 150px;
+  }
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-size: cover;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.album-cover {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s;
+  background: url("http://localhost:8080/images/wallpaper-4k-hinh-nen-4k-hoang-hon-tren-bien-dep_100008878.jpg/raw") no-repeat;
+  background-size: cover;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

@@ -45,6 +45,10 @@ import {DropdownModule} from 'primeng/primeng';
 import { MediaLibraryComponent } from './admin/media-library/media-library.component';
 import { TrackControlsComponent } from './user/track-controls/track-controls.component';
 import { SidebarComponent } from './user/sidebar/sidebar.component';
+import { HomeUserComponent } from './user/home-user/home-user.component';
+import { FavoriteSongComponent } from './user/favorite-song/favorite-song.component';
+import { PodcastsComponent } from './user/podcasts/podcasts.component';
+import { CollectionComponent } from './collection/collection.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { SidebarComponent } from './user/sidebar/sidebar.component';
     SongEditComponent,
     MediaLibraryComponent,
     TrackControlsComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeUserComponent,
+    FavoriteSongComponent,
+    PodcastsComponent,
+    CollectionComponent,
   ],
   imports: [
     BrowserModule,

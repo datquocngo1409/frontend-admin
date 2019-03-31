@@ -1,0 +1,10 @@
+<mat-sidenav-container class="outer-container mat-typography">
+  <mat-sidenav mode="side" opened>
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <app-home-user (show)="show($event)" (hide)="hide($event)"></app-home-user>
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-track-controls></app-track-controls>

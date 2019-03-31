@@ -1,20 +1,25 @@
 <div class="sidebar-container">
   <div class="search-home-container">
-  <mat-nav-list>
-    <mat-list-item class="home-link">
-      <mat-icon class="white-icon">home</mat-icon>
-      <span class="white-letter-home">Home</span>
-    </mat-list-item>
-    <mat-list-item class="search-link">
-      <mat-icon class="white-icon">search</mat-icon>
-      <span class="white-letter-search">Search</span>
-    </mat-list-item>
-    <mat-list-item class="library-link">
-      <mat-icon class="white-icon">subject</mat-icon>
-      <span class="white-letter-library">Your</span>
-      <span class="white-letter-library-edit">Library</span>
-    </mat-list-item>
-  </mat-nav-list>
+    <mat-nav-list>
+      <mat-list-item
+        class="home-link"
+        routerLink="/collection/favorite-song"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}"
+      >
+        <mat-icon class="white-icon">home</mat-icon>
+        <span class="white-letter-home">Home</span>
+      </mat-list-item>
+      <mat-list-item class="search-link">
+        <mat-icon class="white-icon">search</mat-icon>
+        <span class="white-letter-search">Search</span>
+      </mat-list-item>
+      <mat-list-item class="library-link">
+        <mat-icon class="white-icon">subject</mat-icon>
+        <span class="white-letter-library">Your</span>
+        <span class="white-letter-library-edit">Library</span>
+      </mat-list-item>
+    </mat-nav-list>
   </div>
 
   <div class="sign-up-login-container">

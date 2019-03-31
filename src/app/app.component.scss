@@ -1,6 +1,6 @@
-mat-sidenav-container, mat-sidenav-content, mat-sidenav {
-  height: 100%;
-}
+//mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+//  height: 100%;
+//}
 //body {
 //  background-image: url("~src/assets/images/admin-background.png");
 //  background-repeat:no-repeat;
@@ -8,13 +8,13 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav {
 //}
 
 
-mat-sidenav-container, mat-sidenav-content, mat-sidenav {
-  height: 100%;
-}
+//mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+//  height: 100%;
+//}
 
-mat-sidenav {
-  width: 250px;
-}
+//mat-sidenav {
+//  width: 250px;
+//}
 
 html, body {
   margin: 0;
@@ -24,8 +24,4 @@ html, body {
 
 
 @include mat-core();
-
-.outer-container {
-  height: calc( 100% - 100px );
-}
 

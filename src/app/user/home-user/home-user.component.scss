@@ -1,0 +1,85 @@
+.home-user-outer-container {
+  animation: fadein 0.7s;
+  padding: 0 32px;
+  letter-spacing: 0.21px;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 200;
+
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+.nav-home {
+  padding: 20px 0;
+  height: 75px;
+  //background-color: black;
+}
+
+.nav-home-title {
+  color: hsl(0, 0%, 70%);
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 100%;
+  //background-color: red;
+  display: flex;
+}
+
+
+.feature-nav-home-none-title {
+  display: inline-block;
+  //background-color: aqua;
+  width: 7%;
+  padding-left: 10%;
+}
+
+
+.feature-nav-home-title {
+  color: hsl(0, 0%, 70%);
+  //background-color: aqua;
+  align-items: center;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.feature-nav-home-title-name {
+  color: hsl(0, 0%, 70%);
+  font-size: 12px;
+  letter-spacing: 1.92px;
+  line-height: 16px;
+  padding: 5px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  //background-color: chocolate;
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+
+  &:hover {
+    color: hsl(0, 0%, 100%);
+  }
+}
+
+
+.feature-nav-home-title-name-inline {
+  color: hsl(0, 0%, 100%);
+  font-size: 12px;
+  letter-spacing: 1.92px;
+  line-height: 16px;
+  padding: 5px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  //background-color: chocolate;
+  display: inline-block;
+  margin: 10px;
+}
+
+li a {
+  text-decoration: none;
+}
