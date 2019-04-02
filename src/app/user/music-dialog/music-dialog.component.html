@@ -1,0 +1,11 @@
+<div class="info">
+  Bài hát: {{song?.name}} - Singer: {{song?.singer_name}}
+</div>
+<div class="icon">
+  <mat-icon>skip_previous</mat-icon>
+  <mat-icon>skip_next</mat-icon>
+</div>
+<audio controls (ended)="addCount(element)">
+  <source src="http://localhost:8080/mp3files/{{songID}}/raw" type="audio/mpeg"
+          style="width: 100px">
+</audio>

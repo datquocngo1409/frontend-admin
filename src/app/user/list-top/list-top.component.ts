@@ -6,7 +6,7 @@ import {ISong} from '../../song';
 import {SelectionModel} from '@angular/cdk/collections';
 import {UserService} from '../../user.service';
 import {IUser} from '../../user';
-// import {PostDialogComponent} from '../post-dialog/post-dialog.component';
+// import {MusicDialogComponent} from '../post-dialog/post-dialog.component';
 // import {Dialog} from 'primeng/dialog';
 // import {SongEditComponent} from '../song-edit/song-edit.component';
 

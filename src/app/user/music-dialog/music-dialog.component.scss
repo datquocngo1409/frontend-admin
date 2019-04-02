@@ -1,0 +1,22 @@
+.example-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-form > * {
+  width: 100%;
+}
+
+.close {
+  width: 100%;
+}
+
+audio {
+  width: 95%;
+  height: 20px;
+  float: left;
+}
+.icon {
+  padding-left: 50px;
+  float: left;
+}

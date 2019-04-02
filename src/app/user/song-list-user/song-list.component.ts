@@ -6,7 +6,9 @@ import {ISong} from '../../song';
 import {SelectionModel} from '@angular/cdk/collections';
 import {IUser} from '../../user';
 import {UserService} from '../../user.service';
-// import {PostDialogComponent} from '../post-dialog/post-dialog.component';
+import {PostDialogComponent} from '../../admin/post-dialog/post-dialog.component';
+import {MusicDialogComponent} from '../music-dialog/music-dialog.component';
+// import {MusicDialogComponent} from '../post-dialog/post-dialog.component';
 // import {Dialog} from 'primeng/dialog';
 // import {SongEditComponent} from '../song-edit/song-edit.component';
 
@@ -114,6 +116,16 @@ export class SongListUserComponent implements OnInit, AfterViewInit {
   addCount(element) {
     element.listenCount++;
     this.songService.updateSong(element).subscribe();
+  }
+
+  openDialog(element): void {
+    localStorage.setItem('song', element.mp3File.name);
+    localStorage.setItem('id', element.id);
+    const dialogRef = this.dialog.open(MusicDialogComponent, {
+      width: '98%',
+      height: '100px',
+      position: {bottom: '0'}
+    });
   }
 }
 
