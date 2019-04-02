@@ -98,7 +98,7 @@
         <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
         <h3>Your Favorite Song List</h3>
         </mat-card-title>
-        <table (mousemove)="onMouseMove()" class="table">
+        <table class="table">
           <thead class="thead-dark">
           <tr>
             <th>ID</th>
@@ -113,20 +113,20 @@
           </thead>
           <tbody>
           <tr *ngFor="let song of favoriteSongList">
-            <th>{{song.id}}</th>
-            <th>{{song.name}}</th>
-            <th>{{song.description}}</th>
-            <th>{{song.singer_name}}</th>
-            <th>
-              <audio controls (ended)="addCount(element)">
-                <source src="http://localhost:8080/mp3files/{{song?.mp3File.name}}/raw" type="audio/mpeg"
-                        style="width: 100px">
-              </audio>
-            </th>
-            <th>
+            <th (click)="openDialog(song)">{{song.id}}</th>
+            <th (click)="openDialog(song)">{{song.name}}</th>
+            <th (click)="openDialog(song)">{{song.description}}</th>
+            <th (click)="openDialog(song)">{{song.singer_name}}</th>
+            <!--<th>-->
+              <!--<audio controls (ended)="addCount(element)">-->
+                <!--<source src="http://localhost:8080/mp3files/{{song?.mp3File.name}}/raw" type="audio/mpeg"-->
+                        <!--style="width: 100px">-->
+              <!--</audio>-->
+            <!--</th>-->
+            <th (click)="openDialog(song)">
               <img src="http://localhost:8080/images/{{song?.image.name}}/raw" style="width: 60px; height: auto">
             </th>
-            <th>{{song.songCategory.name}}</th>
+            <th (click)="openDialog(song)">{{song.songCategory.name}}</th>
             <th>
               <mat-icon *ngIf="isLiked(song.id)" (click)="like(song?.id)">favorite_border</mat-icon>
               <mat-icon *ngIf="!isLiked(song.id)" (click)="like(song?.id)">favorite</mat-icon>

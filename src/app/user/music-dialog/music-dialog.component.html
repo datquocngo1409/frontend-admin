@@ -3,9 +3,15 @@
 </div>
 <div class="icon">
   <mat-icon>skip_previous</mat-icon>
+  <mat-icon [hidden]="!played" onclick="document.getElementById('player').play()" (click)="clickPlay()">play_arrow</mat-icon>
+  <mat-icon [hidden]="played" onclick="document.getElementById('player').pause()" (click)="clickPause()">pause</mat-icon>
   <mat-icon>skip_next</mat-icon>
 </div>
-<audio controls (ended)="addCount(element)">
-  <source src="http://localhost:8080/mp3files/{{songID}}/raw" type="audio/mpeg"
-          style="width: 100px">
-</audio>
+<div class="audio">
+  <audio id="player" controls (ended)="addCount(song)">
+    <source src="http://localhost:8080/mp3files/{{songID}}/raw" type="audio/mpeg"
+            style="width: 100px">
+  </audio>
+  <mat-icon *ngIf="!isLiked(song?.id)" class="favorite" (click)="like(song?.id)">favorite</mat-icon>
+  <mat-icon *ngIf="isLiked(song?.id)" class="favorite" (click)="like(song?.id)">favorite_border</mat-icon>
+</div>

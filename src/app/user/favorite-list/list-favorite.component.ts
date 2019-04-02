@@ -6,6 +6,7 @@ import {ISong} from '../../song';
 import {SelectionModel} from '@angular/cdk/collections';
 import {UserService} from '../../user.service';
 import {IUser} from '../../user';
+import {MusicDialogComponent} from '../music-dialog/music-dialog.component';
 
 @Component({
   selector: 'app-list-favorite',
@@ -21,7 +22,7 @@ export class ListFavoriteComponent implements OnInit, AfterViewInit {
   public favoriteSongList: ISong[] = [];
   public selection;
   ELEMENT_DATA: ISong[] = [];
-  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'favorite'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'image', 'category', 'favorite'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatPaginator;
@@ -37,12 +38,24 @@ export class ListFavoriteComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.songService.getSongs().subscribe(next => (this.songList.data = next), error1 => this.songList = []);
     this.songService.getSongs().subscribe(next => (this.songList2 = next), error1 => this.songList2 = []);
     this.userService.getUsers().subscribe(next => this.userList = next);
     this.username = this.username.split('{"token":"jwt will come later","name":"').toString();
     this.username = this.username.substring(1, this.username.length - 2);
     this.userService.getUserByUsername(this.username).subscribe(next => this.user = next);
+    this.songService.getSongs().subscribe(next => {
+      this.songList = next;
+      this.ArrayFavorite = this.user.favouriteMusic.split(',').map(function (item) {
+        return parseInt(item, 10);
+      });
+      let song: ISong;
+      for (song of this.songList) {
+        if (!!this.isLiked(song.id)) {
+          this.favoriteSongList.push(song);
+        }
+      }
+      console.log(this.favoriteSongList);
+    });
   }
 
   ngAfterViewInit() {
@@ -55,19 +68,6 @@ export class ListFavoriteComponent implements OnInit, AfterViewInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.songList.filter = filterValue;
-  }
-
-  onMouseMove() {
-    this.ArrayFavorite = this.user.favouriteMusic.split(',').map(function (item) {
-      return parseInt(item, 10);
-    });
-    let song: ISong;
-    for (song of this.songList2) {
-      if (!!this.isLiked(song.id)) {
-        this.favoriteSongList.push(song);
-      }
-    }
-    this.songList2.splice(0, this.songList2.length + 1);
   }
 
   like(id: number) {
@@ -93,6 +93,16 @@ export class ListFavoriteComponent implements OnInit, AfterViewInit {
   addCount(element) {
     element.listenCount++;
     this.songService.updateSong(element).subscribe();
+  }
+
+  openDialog(element): void {
+    localStorage.setItem('song', element.mp3File.name);
+    localStorage.setItem('id', element.id);
+    const dialogRef = this.dialog.open(MusicDialogComponent, {
+      width: '98%',
+      minHeight: '100px',
+      position: {bottom: '0'}
+    });
   }
 }
 

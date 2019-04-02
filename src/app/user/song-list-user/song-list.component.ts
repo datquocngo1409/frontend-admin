@@ -27,7 +27,7 @@ export class SongListUserComponent implements OnInit, AfterViewInit {
   public selection;
   selectedSong: ISong[] = [];
   ELEMENT_DATA: ISong[] = [];
-  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'mp3file', 'image', 'category', 'favorite'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'singer-name', 'image', 'category', 'favorite'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatPaginator;
@@ -63,11 +63,17 @@ export class SongListUserComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.songService.getSongs().subscribe(next => (this.songList.data = next));
     this.userService.getUsers().subscribe(next => this.userList = next);
     this.username = this.username.split('{"token":"jwt will come later","name":"').toString();
     this.username = this.username.substring(1, this.username.length - 2);
     this.userService.getUserByUsername(this.username).subscribe(next => this.user = next);
+    this.songService.getSongs().subscribe(next => {
+      this.songList.data = next;
+      this.ArrayFavorite = this.user.favouriteMusic.split(',').map(function (item) {
+        return parseInt(item, 10);
+      });
+      console.log(this.ArrayFavorite);
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -86,12 +92,6 @@ export class SongListUserComponent implements OnInit, AfterViewInit {
     alert('Deleted!');
     this.router.navigate(['home/song-list']);
     location.reload();
-  }
-
-  onMouseMove() {
-    this.ArrayFavorite = this.user.favouriteMusic.split(',').map(function (item) {
-      return parseInt(item, 10);
-    });
   }
 
   like(id: number) {
@@ -123,7 +123,7 @@ export class SongListUserComponent implements OnInit, AfterViewInit {
     localStorage.setItem('id', element.id);
     const dialogRef = this.dialog.open(MusicDialogComponent, {
       width: '98%',
-      height: '100px',
+      minHeight: '100px',
       position: {bottom: '0'}
     });
   }
