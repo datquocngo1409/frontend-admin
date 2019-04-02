@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostDialogComponent } from './post-dialog.component';
+import { MusicDialogComponent } from './music-dialog.component';
 
 describe('MusicDialogComponent', () => {
-  let component: PostDialogComponent;
-  let fixture: ComponentFixture<PostDialogComponent>;
+  let component: MusicDialogComponent;
+  let fixture: ComponentFixture<MusicDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostDialogComponent ]
+      declarations: [ MusicDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PostDialogComponent);
+    fixture = TestBed.createComponent(MusicDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -54,6 +54,7 @@ import {NewListUserComponent} from './user/new-list/new-list.component';
 import {HeaderUserComponent} from './navigation-user/header-user/header-user.component';
 import {ListFavoriteComponent} from './user/favorite-list/list-favorite.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+import {MusicDialogComponent} from './user/music-dialog/music-dialog.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
     RegisterUserComponent,
     NewListUserComponent,
     InformationUserComponent,
-    ListFavoriteComponent
+    ListFavoriteComponent,
+    MusicDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -119,6 +121,6 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [PostDialogComponent]
+  entryComponents: [PostDialogComponent, MusicDialogComponent]
 })
 export class AppModule { }

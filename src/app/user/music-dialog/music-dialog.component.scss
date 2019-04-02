@@ -1,0 +1,34 @@
+.example-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-form > * {
+  width: 100%;
+}
+
+.close {
+  width: 100%;
+}
+
+audio {
+  width: 95%;
+  height: 20px;
+  float: left;
+}
+
+.icon {
+}
+
+.info {
+  width: 45%;
+  float: left;
+}
+
+body {
+  background-color: black;
+}
+
+.favorite {
+  padding-left: 20px;
+}
