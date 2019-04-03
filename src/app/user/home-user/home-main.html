@@ -1,0 +1,52 @@
+<section class="home-user-outer-container">
+  <nav class="nav-home">
+    <ul class="nav-home-title">
+      <li class="feature-nav-home-none-title"></li>
+      <li class="feature-nav-home-title">
+        <a class="feature-nav-home-title-name"
+           (mouseover)="isHovering = true"
+           (mouseleave)="isHovering = false"
+           (click)="showFavoriteSong()"
+           routerLink="/song-list"
+        ><b>SONG LIST</b></a>
+      </li>
+      <li
+        class="feature-nav-home-title"
+      >
+        <a class="feature-nav-home-title-name"
+           (mouseover)="isHovering = true"
+           (mouseleave)="isHovering = false"
+           (click)="showPodCasts()"
+           routerLink="/list-top"
+        ><b>TOP SONG</b></a>
+      </li>
+      <li class="feature-nav-home-title">
+        <a class="feature-nav-home-title-name"
+           (mouseover)="isHovering = true"
+           (mouseleave)="isHovering = false"
+           routerLink="/new-list"><b>NEW SONG</b></a>
+      </li>
+      <li class="feature-nav-home-title">
+        <a class="feature-nav-home-title-name"
+           (mouseover)="isHovering = true"
+           (mouseleave)="isHovering = false"
+           routerLink="/favorite-song"><b>FAVORITE SONG LIST</b></a>
+      </li>
+      <li class="feature-nav-home-title">
+        <a class="feature-nav-home-title-name"
+           (mouseover)="isHovering = true"
+           (mouseleave)="isHovering = false"
+           routerLink="https://www.facebook.com/"><b>FACEBOOK</b></a>
+      </li>
+      <li class="feature-nav-home-title">
+        <a class="feature-nav-home-title-name"
+           (mouseover)="isHovering = true"
+           (mouseleave)="isHovering = false"
+           routerLink="https://www.gmail.com"><b>GMAIL</b></a>
+      </li>
+      <li class="feature-nav-home-none-title"
+          (mouseover)="isHovering = true"
+          (mouseleave)="isHovering = false"></li>
+    </ul>
+  </nav>
+</section>

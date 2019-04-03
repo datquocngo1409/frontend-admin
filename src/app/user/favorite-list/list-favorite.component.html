@@ -105,7 +105,6 @@
             <th>Name</th>
             <th>Description</th>
             <th>Singer</th>
-            <th>Mp3</th>
             <th>Image</th>
             <th>Category</th>
             <th>Favorite</th>
@@ -128,8 +127,8 @@
             </th>
             <th (click)="openDialog(song)">{{song.songCategory.name}}</th>
             <th>
-              <mat-icon *ngIf="isLiked(song.id)" (click)="like(song?.id)">favorite_border</mat-icon>
-              <mat-icon *ngIf="!isLiked(song.id)" (click)="like(song?.id)">favorite</mat-icon>
+              <mat-icon *ngIf="isLiked(element?.id)" (click)="like(element?.id)">favorite</mat-icon>
+              <mat-icon *ngIf="!isLiked(element?.id)" (click)="like(element?.id)" [ngStyle]="{'color': 'deeppink'}">favorite</mat-icon>
             </th>
           </tr>
           </tbody>

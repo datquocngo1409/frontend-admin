@@ -57,8 +57,8 @@
               <ng-container matColumnDef="favorite">
                 <mat-header-cell *matHeaderCellDef> Add to Favorite</mat-header-cell>
                 <mat-cell *matCellDef="let element">
-                  <mat-icon *ngIf="isLiked(element.id)" (click)="like(element.id)">favorite_border</mat-icon>
-                  <mat-icon *ngIf="!isLiked(element.id)" (click)="like(element.id)">favorite</mat-icon>
+                  <mat-icon *ngIf="isLiked(element?.id)" (click)="like(element?.id)" [ngStyle]="{'color': 'deeppink'}">favorite</mat-icon>
+                  <mat-icon *ngIf="!isLiked(element?.id)" (click)="like(element?.id)">favorite_border</mat-icon>
                 </mat-cell>
               </ng-container>
               <ng-container matColumnDef="listenCount">

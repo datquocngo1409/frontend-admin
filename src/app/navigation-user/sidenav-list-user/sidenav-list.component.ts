@@ -20,7 +20,7 @@ export class SidenavListUserComponent implements OnInit {
   }
 
   public showInformation() {
-    this.router.navigate(['/information']);
+    this.router.navigate(['/home-user']);
   }
 
   showListSong() {

@@ -8,11 +8,13 @@
   flex-direction: column;
   max-height: 2000px;
   min-width: 100%;
+  background-color: azure;
 }
 
 .mat-table {
   overflow: auto;
   max-height: 2000px;
+  background-color: aliceblue;
 }
 
 a {
@@ -45,6 +47,7 @@ mat-header-cell mat-cell button{
 
 mat-card {
   max-height: 2000px;
+  background-color: mintcream;
 }
 
 mat-card-content {
@@ -54,4 +57,13 @@ mat-card-content {
 mat-cell {
   text-align: center;
   justify-content: center;
+  min-height: 70px;
+}
+
+mat-paginator {
+  background-color: azure;
+}
+
+mat-toolbar-row {
+  background-color: azure;
 }

@@ -8,11 +8,13 @@
   flex-direction: column;
   max-height: 2000px;
   min-width: 100%;
+  background-color: azure;
 }
 
 .mat-table {
   overflow: auto;
   max-height: 2000px;
+  background-color: aliceblue;
 }
 
 a {
@@ -23,18 +25,13 @@ mat-header-cell mat-cell button{
   display:flex;
 }
 
-mat-cell {
-  text-align: center;
-  justify-content: center;
-}
-
 .customWidthClass {
   flex: 0 0 300px;
   padding: 8px 8px 8px 0;
 }
 
 .paging {
-   flex: 1 1 auto;
+  flex: 1 1 auto;
   margin: 0;
 }
 
@@ -50,8 +47,23 @@ mat-cell {
 
 mat-card {
   max-height: 2000px;
+  background-color: mintcream;
 }
 
 mat-card-content {
   max-height: 2000px;
+}
+
+mat-cell {
+  text-align: center;
+  justify-content: center;
+  min-height: 70px;
+}
+
+mat-paginator {
+  background-color: azure;
+}
+
+mat-toolbar-row {
+  background-color: azure;
 }
