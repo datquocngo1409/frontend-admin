@@ -20,9 +20,14 @@ export class MusicDialogComponent implements OnInit {
   song: ISong = null;
   played = true;
   private songList: ISong[];
+  loop = '';
   user: IUser;
   ArrayFavorite: number[] = [];
   public favoriteSongList: ISong[] = [];
+  isRepeated = false;
+  index: number;
+  hasPrevious = true;
+  hasNext = true;
 
   constructor(
     public dialogRef: MatDialogRef<MusicDialogComponent>,
@@ -40,6 +45,7 @@ export class MusicDialogComponent implements OnInit {
     // Get Song By ID
     this.songID = localStorage.getItem('song').toString();
     this.idString = localStorage.getItem('id').toString();
+    console.log(this.songID);
     this.id = parseInt(this.idString, 10);
     this.songService.getSongById(this.id).subscribe(next => this.song = next);
 
@@ -60,7 +66,6 @@ export class MusicDialogComponent implements OnInit {
           this.favoriteSongList.push(song);
         }
       }
-      console.log(this.favoriteSongList);
     });
   }
 
@@ -95,5 +100,57 @@ export class MusicDialogComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  repeat() {
+    this.isRepeated = !this.isRepeated;
+    this.loop = 'loop';
+    console.log(this.loop);
+  }
+
+  unRepeat() {
+    this.isRepeated = !this.isRepeated;
+    this.loop = '';
+    console.log(this.loop);
+  }
+
+  nextSong() {
+    this.songService.getSongs().subscribe(next => this.songList = next);
+    console.log(this.songList);
+
+    this.idString = localStorage.getItem('id').toString();
+    this.id = parseInt(this.idString, 10);
+    this.songService.getSongById(this.id).subscribe(next => this.song = next);
+
+    if (this.songList.findIndex(i => i.name === this.song.name) !== (this.songList.length - 1)) {
+      this.song = this.songList[this.songList.findIndex(i => i.name === this.song.name) + 1];
+    } else {
+      this.song = this.songList[0];
+    }
+
+    localStorage.setItem('song', this.song.mp3File.name);
+    localStorage.setItem('id', this.song.id.toString());
+    this.username = localStorage.getItem('user');
+    this.ngOnInit();
+  }
+
+  previousSong() {
+    this.songService.getSongs().subscribe(next => this.songList = next);
+    console.log(this.songList);
+
+    this.idString = localStorage.getItem('id').toString();
+    this.id = parseInt(this.idString, 10);
+    this.songService.getSongById(this.id).subscribe(next => this.song = next);
+
+    if (this.songList.findIndex(i => i.name === this.song.name) !== (this.songList.length - 1)) {
+      this.song = this.songList[this.songList.findIndex(i => i.name === this.song.name) + 1];
+    } else {
+      this.song = this.songList[0];
+    }
+
+    localStorage.setItem('song', this.song.mp3File.name);
+    localStorage.setItem('id', this.song.id.toString());
+    this.username = localStorage.getItem('user');
+    this.ngOnInit();
   }
 }
