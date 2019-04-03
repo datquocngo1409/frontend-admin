@@ -7,6 +7,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PodcastsComponent implements OnInit {
   @Input() toggle1: Boolean;
+  isSelected: false;
+  isHovering: false;
   constructor() { }
 
   ngOnInit() {

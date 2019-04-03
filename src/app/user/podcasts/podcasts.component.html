@@ -1,1 +1,38 @@
-<div [hidden]="toggle1">Holy Shit</div>
+<div class="playlist-container">
+  <div class="outer-container"
+       (mouseover)="isHovering = true"
+       (mouseleave)="isHovering = false"
+       [style.padding-right.px]="(!isHovering) ? '10' : ''">
+    <div class="inner-container">
+      <div class="rank">{{1}}</div>
+      <div class="album-cover"></div>
+      <div class="track-info">
+        <div class="song-name-container">
+          <span class="song-name">Nối Vòng Tay Lớn</span>
+          <mat-icon class="explicit">explicit</mat-icon>
+        </div>
+        <div class="secondary-info">
+          <span class="artist-name">Khánh Ly</span>
+        </div>
+      </div>
+      <button
+        class="more-button"
+        aria-label="More"
+        mat-icon-button
+        [mat-menu-trigger-for]="menu"
+        [style.visibility]="(isHovering) ? 'visible' : 'hidden'"
+      >
+        <mat-icon class="more-vert">more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button aria-label="Play next" mat-menu-item>Play Next</button>
+        <button aria-label="Play later" mat-menu-item>Play Later</button>
+      </mat-menu>
+
+      <div
+        class="time"
+      >3:50
+      </div>
+    </div>
+  </div>
+</div>
