@@ -53,8 +53,7 @@ div {
   @media screen and (max-width: 599.99px) and (orientation: portrait), (max-width: 959.99px) and (orientation: landscape) {
     width: 150px;
   }
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-right: 12px;
   padding-bottom: 20px;
 }
 
@@ -85,4 +84,57 @@ div {
   &:hover {
     opacity: 0.7;
   }
+}
+
+.album-name {
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+  display: inline-block;
+}
+
+.album-text {
+  cursor: default;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.album-name-container {
+  display: flex;
+  align-items: center;
+}
+
+.explicit {
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+  padding-left: 2px;
+  color: #b3b3b3;
+}
+
+.text-outer-container {
+  display: flex;
+}
+
+.more-info-album-name {
+  color: hsl(0, 0%, 100%);
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 0.21px;
+  line-height: 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.more-info-album {
+  display: inline;
+  text-align: center;
 }
